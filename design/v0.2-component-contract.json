@@ -658,13 +658,18 @@
       "id": 22,
       "name": "MotionProgress",
       "states": [
-        "to-be-defined-before-implementation"
+        "determinate",
+        "indeterminate",
+        "minimum",
+        "maximum",
+        "invalid",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionProgress.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -706,13 +711,17 @@
       "id": 24,
       "name": "MotionSkeleton",
       "states": [
-        "to-be-defined-before-implementation"
+        "loading",
+        "rows",
+        "avatar",
+        "largeText",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionSkeleton.swift"
         },
         "flutter": {
           "implementation": "planned",

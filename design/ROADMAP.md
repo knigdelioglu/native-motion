@@ -57,6 +57,7 @@ tracked separately. Do not label experimental platform adapters as stable.
 - [x] SwiftUI text, search and number entry controls with localized numeric parsing
 - [x] SwiftUI select, native menu and host-controlled modal dialog
 - [x] SwiftUI popover, tooltip and RTL-aware scrollable tabs
+- [x] SwiftUI native progress and reduced-motion skeleton placeholders
 - [ ] Remaining v0.2 interaction components
 - [ ] Device-level accessibility, screenshot approval, and performance review
 

@@ -44,6 +44,8 @@ and mandatory acceptance gates are defined separately in each plan.
 | `MotionPopover` | Native anchored, externally controlled popover; adaptive compact presentation (SwiftUI) |
 | `MotionTooltip` | Native hover help and accessible touch/focus explanation (SwiftUI) |
 | `MotionTabs` | Scrollable native tab bar, disabled options and RTL keyboard navigation (SwiftUI) |
+| `MotionProgress` | Native determinate/indeterminate progress with explicit host-supplied fraction (SwiftUI) |
+| `MotionSkeleton` | Accessible loading placeholder with optional pulse, reduced motion and layout bounds (SwiftUI) |
 
 Supporting these are semantic motion presets (`responsive`, `gentle`,
 `morph`, `settle`), light/dark palette tokens, layout dimensions, Reduce
