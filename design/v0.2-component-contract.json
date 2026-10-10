@@ -207,13 +207,18 @@
       "id": 7,
       "name": "MotionSplitButton",
       "states": [
-        "to-be-defined-before-implementation"
+        "primaryAction",
+        "alternativeMenu",
+        "disabledOption",
+        "loading",
+        "keyboard",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionSplitButton.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -231,13 +236,19 @@
       "id": 8,
       "name": "MotionConfirmButton",
       "states": [
-        "to-be-defined-before-implementation"
+        "idle",
+        "armed",
+        "cancel",
+        "confirm",
+        "disabled",
+        "loading",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionConfirmButton.swift"
         },
         "flutter": {
           "implementation": "planned",
