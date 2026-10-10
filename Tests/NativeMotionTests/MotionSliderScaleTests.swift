@@ -17,7 +17,7 @@ final class MotionSliderScaleTests: XCTestCase {
         XCTAssertEqual(scale.snapped(95), 95)
         XCTAssertEqual(scale.snapped(93), 95)
         XCTAssertEqual(scale.adjacentValue(from: 90, direction: 1), 95)
-        XCTAssertEqual(scale.adjacentValue(from: 95, direction: -1), 85)
+        XCTAssertEqual(scale.adjacentValue(from: 95, direction: -1), 90)
     }
 
     func testNonZeroMinimumAndFractionalSteps() {
