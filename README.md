@@ -3,7 +3,7 @@
 **Calm by default. Responsive by nature. Native by design.**
 
 Native Motion is an independent, open-source, native-first UI and motion
-design system. It has independent **SwiftUI and Flutter renderers**; the Flutter package is
+design system. It has independent **SwiftUI, Flutter and React Native + Expo renderers**; the Flutter and React Native packages are
 experimental. Jetpack Compose is a future renderer. No WebViews, cross-platform
 UI bridges or ported component source are involved. All renderers share
 semantic design tokens and interaction intent, not identical spring constants.
@@ -72,6 +72,21 @@ dependencies:
 See [Flutter renderer architecture](docs/FLUTTER.md). This is an early release,
 not a feature-complete match to the five SwiftUI components.
 
+## React Native + Expo (experimental, 25 component sources)
+
+An independent 25-component React Native renderer is available at
+[packages/react-native](packages/react-native/README.md). It uses built-in
+React Native controls and works as a local/workspace dependency in Expo apps.
+TypeScript, policy and token checks run in separate CI. **25 source exports
+do not imply 25 device-certified equivalent interactions**: anchored
+popovers, modal focus, hardware keyboard, gesture dynamics and Android/iOS
+accessibility still require verification. See the
+[cross-renderer policy](docs/RENDERER_POLICY.md) for all future components.
+
+```sh
+npm install ../native-motion/packages/react-native
+```
+
 ## Swift Package Manager
 
 In Xcode, use **File → Add Package Dependencies…**:
@@ -137,7 +152,7 @@ swift run NativeMotionCatalog
 
 The interactive catalog requires macOS 13+ with SwiftUI. Linux compiles
 platform-neutral logic, including keyboard selection policy, and shows a
-catalog availability message. Swift CI tests macOS and Linux; a separate Flutter workflow checks Flutter
+catalog availability message. Swift CI tests macOS and Linux; separate Flutter and React Native workflows check their own packages. Flutter
 analysis, widget behavior, token parity and the standalone gallery.
 Manual device-level visual, keyboard and accessibility checks remain necessary.
 

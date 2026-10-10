@@ -1,0 +1,47 @@
+name: React Native Renderer CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/react-native/**'
+      - 'design/v0.2-component-contract*.json'
+      - 'Tests/NativeMotionTests/Snapshots/**'
+      - '.github/workflows/react-native.yml'
+  pull_request:
+    paths:
+      - 'packages/react-native/**'
+      - 'design/v0.2-component-contract*.json'
+      - 'Tests/NativeMotionTests/Snapshots/**'
+      - '.github/workflows/react-native.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  react-native:
+    name: React Native types and policy checks
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install package dependencies
+        working-directory: packages/react-native
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: TypeScript native component surface
+        working-directory: packages/react-native
+        run: npm run typecheck
+      - name: Pure policy invariants
+        working-directory: packages/react-native
+        run: npm run test:policies
+      - name: Inventory and palette parity
+        run: python3 tools/check_react_native_renderer.py
+      - name: Install independent Expo catalog
+        working-directory: packages/react-native/example
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Typecheck Expo catalog (all 25 components)
+        working-directory: packages/react-native/example
+        run: npm run typecheck

@@ -1,0 +1,28 @@
+{
+  "name": "@native-motion/react-native",
+  "version": "0.2.0-dev.1",
+  "private": true,
+  "description": "Independent React Native and Expo renderer for Native Motion",
+  "license": "MIT",
+  "reactNative": "src/index.ts",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test:policies": "node --experimental-strip-types --test tests/policies.test.mjs",
+    "check": "npm run typecheck && npm run test:policies"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-native": ">=0.81.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "react": "19.2.0",
+    "react-native": "0.83.2",
+    "typescript": "^5.9.3"
+  }
+}

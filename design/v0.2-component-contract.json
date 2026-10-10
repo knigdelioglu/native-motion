@@ -22,7 +22,9 @@
     "rtl-where-applicable",
     "keyboard-and-touch-where-applicable",
     "approved-visual-baselines",
-    "real-device-accessibility-and-motion-review"
+    "real-device-accessibility-and-motion-review",
+    "react-native-expo-25-export-source-ci",
+    "react-native-ios-android-device-qa"
   ],
   "components": [
     {
@@ -53,6 +55,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionButton.tsx"
         }
       }
     },
@@ -82,6 +89,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionSegmentedControl.tsx"
         }
       }
     },
@@ -110,6 +122,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionExpandableCard.tsx"
         }
       }
     },
@@ -140,6 +157,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionElasticSlider.tsx"
         }
       }
     },
@@ -169,6 +191,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionStatusIndicator.tsx"
         }
       }
     },
@@ -200,6 +227,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionIconButton.tsx"
         }
       }
     },
@@ -229,6 +261,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionSplitButton.tsx"
         }
       }
     },
@@ -259,6 +296,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionConfirmButton.tsx"
         }
       }
     },
@@ -287,6 +329,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionToggle.tsx"
         }
       }
     },
@@ -316,6 +363,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionCheckbox.tsx"
         }
       }
     },
@@ -345,6 +397,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionRadioGroup.tsx"
         }
       }
     },
@@ -373,6 +430,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionSwitch.tsx"
         }
       }
     },
@@ -404,6 +466,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionTextField.tsx"
         }
       }
     },
@@ -435,6 +502,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionSearchField.tsx"
         }
       }
     },
@@ -469,6 +541,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionNumberField.tsx"
         }
       }
     },
@@ -499,6 +576,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionSelect.tsx"
         }
       }
     },
@@ -528,6 +610,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionMenu.tsx"
         }
       }
     },
@@ -560,6 +647,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionDialog.tsx"
         }
       }
     },
@@ -590,6 +682,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionPopover.tsx"
         }
       }
     },
@@ -620,6 +717,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionTooltip.tsx"
         }
       }
     },
@@ -651,6 +753,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionTabs.tsx"
         }
       }
     },
@@ -680,6 +787,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionProgress.tsx"
         }
       }
     },
@@ -710,6 +822,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionToast.tsx"
         }
       }
     },
@@ -738,6 +855,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionSkeleton.tsx"
         }
       }
     },
@@ -769,6 +891,11 @@
           "implementation": "planned",
           "validation": "not-run",
           "source": null
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionStepper.tsx"
         }
       }
     }
