@@ -24,9 +24,17 @@
 - [ ] Measure real animation/frame performance with Instruments on Apple hardware
 - [ ] Manual VoiceOver and visual quality walkthrough
 
+## PR 5 · Flutter foundation
+- [x] Independent native Flutter package and semantic motion/color tokens
+- [x] Flutter MotionButton and MotionStatusIndicator with host-controlled state
+- [x] Automated palette parity tests against Swift reference tokens
+- [x] Independent gallery and pinned stable Flutter CI
+- [ ] Flutter segmented control, expandable card and elastic slider
+- [ ] Native Flutter golden baselines and on-device semantics/performance review
+
 ## Next
-- Approve and enforce native screenshot goldens
-- Flutter renderer after native interaction contracts mature
+- Approve and enforce macOS screenshot goldens after a real visual review
+- Flutter component expansion and screen-reader coverage
 - Jetpack Compose renderer calibrated independently
 
 Prioritize native interaction quality over the number of components.
