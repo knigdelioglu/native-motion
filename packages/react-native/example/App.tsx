@@ -7,7 +7,7 @@ import {
  MotionSearchField,MotionNumberField,MotionSelect,MotionMenu,MotionDialog,
  MotionPopover,MotionTooltip,MotionTabs,MotionProgress,MotionToast,MotionSkeleton,MotionStepper,
  MotionAccordion,MotionDisclosureGroup,MotionDrawer,MotionSheet,MotionBottomSheet,
- MotionContextMenu,MotionCommandMenu,
+ MotionContextMenu,MotionCommandMenu,MotionBreadcrumb,MotionPagination,MotionSideNavigation,
  type CheckboxState, type MotionToastKind,
 } from '@native-motion/react-native';
 
@@ -44,6 +44,9 @@ export default function App() {
  const [overlayBusy,setOverlayBusy]=useState(false);
  const [commandOpen,setCommandOpen]=useState(false);
  const [commandQuery,setCommandQuery]=useState('');
+ const [navigationPage,setNavigationPage]=useState(42);
+ const [navigationSection,setNavigationSection]=useState('general');
+ const [breadcrumbCurrent,setBreadcrumbCurrent]=useState('details');
  const section=(heading:string,children:React.ReactNode)=>
   <View style={{gap:12,paddingVertical:16,borderBottomWidth:1,borderColor:'#BBC5D4'}}>
     <Text accessibilityRole="header" style={{fontSize:19,fontWeight:'700'}}>{heading}</Text>{children}
@@ -110,6 +113,19 @@ export default function App() {
        <Text>Long-press this document or use More actions.</Text>
      </MotionContextMenu>
      <MotionButton label="Find a command" onPress={()=>setCommandOpen(true)}/>
+   </>)}
+   {section('v0.5 · Breadcrumb, Pagination, SideNavigation (33–35)',<>
+     <MotionBreadcrumb label="Document path" items={[
+       {id:'home',label:'Home'},{id:'library',label:'Library'},
+       {id:'details',label:'Details'}
+     ]} currentId={breadcrumbCurrent} onNavigate={setBreadcrumbCurrent}/>
+     <MotionPagination label="Results pages" page={navigationPage}
+       totalPages={1000} onChange={setNavigationPage}/>
+     <Text>Page: {navigationPage}</Text>
+     <MotionSideNavigation label="Settings navigation" items={[
+       {id:'general',label:'General'},{id:'account',label:'Account'},
+       {id:'disabled',label:'Disabled',disabled:true}
+     ]} selection={navigationSection} onChange={setNavigationSection}/>
    </>)}
    {section('Native overlays (17–20)',<>
      <MotionMenu label="More actions" actions={[{id:'share',label:'Share',onPress:()=>setMenuResult('Share')}]}/>

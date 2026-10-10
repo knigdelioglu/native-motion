@@ -90,3 +90,20 @@ test('v0.5 searchable commands support empty and case-insensitive filters',()=>{
  assert.equal(canExecuteCommand('export',commands,true),false);
  assert.equal(canExecuteCommand('save',commands,false),false);
 });
+
+import {canNavigate,pageWindow,nextPage} from '../src/navigationPolicies.ts';
+test('v0.5 breadcrumb navigation never uses a disabled/active item',()=>{
+ assert.equal(canNavigate('home','detail',new Set(['home'])),true);
+ assert.equal(canNavigate('detail','detail',new Set(['detail'])),false);
+ assert.equal(canNavigate('blocked','detail',new Set(['home'])),false);
+});
+test('v0.5 pagination is bounded and stable even with huge totals',()=>{
+ assert.deepEqual(pageWindow(1,0),[]);
+ assert.deepEqual(pageWindow(1,3),[1,2,3]);
+ assert.deepEqual(pageWindow(1,1000000),[1,2,3,4,5]);
+ assert.deepEqual(pageWindow(50,100),[48,49,50,51,52]);
+ assert.deepEqual(pageWindow(100,100),[96,97,98,99,100]);
+ assert.equal(nextPage(1,100,-1),null);
+ assert.equal(nextPage(100,100,1),null);
+ assert.equal(nextPage(1,100,1),2);
+});
