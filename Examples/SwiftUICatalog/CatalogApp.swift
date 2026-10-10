@@ -28,6 +28,8 @@ private struct CatalogView: View {
     @State private var appearanceOverride = "system"
     @State private var forceReducedMotion = false
     @State private var forceLargeText = false
+    @State private var compactSelection = false
+    @State private var selectionCheck: MotionCheckboxState = .mixed
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var systemDynamicType
 
@@ -173,6 +175,25 @@ private struct CatalogView: View {
                         .font(.footnote).foregroundStyle(.secondary)
                     Text("First click arms; second confirms. Cancel or Escape disarms.")
                         .font(.caption).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionToggle").font(.title2.bold())
+                    MotionToggle("Compact selection", isOn: $compactSelection)
+                    MotionToggle("Read-only toggle", isOn: .constant(true), isEnabled: false)
+                    Text("Host selection: \(compactSelection ? "On" : "Off")")
+                        .font(.footnote).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionCheckbox").font(.title2.bold())
+                    MotionCheckbox("Select all", state: $selectionCheck)
+                    MotionCheckbox("Disabled option", state: .constant(.checked), isEnabled: false)
+                    MotionButton("Set partially checked", variant: .secondary) {
+                        selectionCheck = .mixed
+                    }
+                    Text("Checkbox: \(selectionCheck.rawValue)")
+                        .font(.footnote).foregroundStyle(.secondary)
                 }
 
                 VStack(alignment: .leading, spacing: 12) {

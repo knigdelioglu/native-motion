@@ -266,13 +266,17 @@
       "id": 9,
       "name": "MotionToggle",
       "states": [
-        "to-be-defined-before-implementation"
+        "on",
+        "off",
+        "disabled",
+        "keyboard",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionToggle.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -290,13 +294,18 @@
       "id": 10,
       "name": "MotionCheckbox",
       "states": [
-        "to-be-defined-before-implementation"
+        "checked",
+        "unchecked",
+        "mixed",
+        "disabled",
+        "keyboard",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionCheckbox.swift"
         },
         "flutter": {
           "implementation": "planned",

@@ -52,6 +52,7 @@ tracked separately. Do not label experimental platform adapters as stable.
 - [x] Flutter elastic slider source, range model and widget tests
 - [x] SwiftUI MotionIconButton source and policy tests
 - [x] SwiftUI split button and two-stage confirmation action policy
+- [x] SwiftUI compact toggle-button and three-state checkbox
 - [ ] Remaining v0.2 interaction components
 - [ ] Device-level accessibility, screenshot approval, and performance review
 
