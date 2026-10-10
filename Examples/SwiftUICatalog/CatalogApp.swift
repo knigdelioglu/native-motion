@@ -49,6 +49,12 @@ private struct CatalogView: View {
     @State private var passiveProgress = 0.35
     @State private var skeletonRows = 3
     @State private var skeletonAvatar = true
+    @State private var toastPresented = true
+    @State private var toastKind: MotionToastKind = .neutral
+    @State private var toastDismissCount = 0
+    @State private var workflowCurrent = "review"
+    @State private var workflowCompleted: Set<String> = ["choose"]
+    @State private var workflowAllowsFuture = false
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var systemDynamicType
 
@@ -460,6 +466,57 @@ private struct CatalogView: View {
                     Stepper("Placeholder rows: \(skeletonRows)", value: $skeletonRows, in: 1...8)
                     Toggle("Show placeholder avatar", isOn: $skeletonAvatar)
                     Text("Check Reduce Motion and Dynamic Type in the inspection controls.")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionToast").font(.title2.bold())
+                    Picker("Notice kind", selection: $toastKind) {
+                        ForEach(MotionToastKind.allCases, id: \.self) { kind in
+                            Text(kind.rawValue.capitalized).tag(kind)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    MotionToast(
+                        "Changes recorded",
+                        kind: toastKind,
+                        detail: "The host explicitly supplies this notification.",
+                        isPresented: $toastPresented,
+                        onDismiss: { toastDismissCount += 1 }
+                    )
+                    MotionButton("Show host notification", variant: .secondary) {
+                        toastPresented = true
+                    }
+                    Text("Dismissals: \(toastDismissCount). No auto-dismiss timer.")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionStepper").font(.title2.bold())
+                    MotionStepper(
+                        "Publish workflow",
+                        steps: [
+                            MotionStepItem("choose", title: "Choose", detail: "Select a file"),
+                            MotionStepItem("review", title: "Review", detail: "Check the data"),
+                            MotionStepItem("blocked", title: "Unavailable", isEnabled: false),
+                            MotionStepItem("submit", title: "Publish", detail: "Final action")
+                        ],
+                        selection: $workflowCurrent,
+                        completedIDs: workflowCompleted,
+                        allowsFutureNavigation: workflowAllowsFuture
+                    )
+                    Toggle("Allow future step navigation", isOn: $workflowAllowsFuture)
+                    HStack {
+                        MotionButton("Mark current completed", variant: .secondary) {
+                            workflowCompleted.insert(workflowCurrent)
+                        }
+                        MotionButton("Advance to Publish", variant: .secondary) {
+                            workflowCurrent = "submit"
+                        }
+                    }
+                    Text("Active: \(workflowCurrent). Completed: \(workflowCompleted.sorted().joined(separator: ", "))")
+                        .font(.caption).foregroundStyle(.secondary)
+                    Text("Previous steps are not automatically marked completed.")
                         .font(.caption).foregroundStyle(.secondary)
                 }
 
