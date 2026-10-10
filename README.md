@@ -38,6 +38,9 @@ and mandatory acceptance gates are defined separately in each plan.
 | `MotionTextField` | Native text input with focus and visible helper/error state (SwiftUI) |
 | `MotionSearchField` | Host-owned search input with clear and submit controls (SwiftUI) |
 | `MotionNumberField` | Locale-aware bounded number entry, strict parsing, adjustable increments (SwiftUI) |
+| `MotionSelect` | Native drop-down, host-controlled selection and disabled options (SwiftUI) |
+| `MotionMenu` | Native action menu, disabled/destructive items and keyboard support (SwiftUI) |
+| `MotionDialog` | Native host-controlled modal; safe cancel, confirmation and busy gating (SwiftUI) |
 
 Supporting these are semantic motion presets (`responsive`, `gentle`,
 `morph`, `settle`), light/dark palette tokens, layout dimensions, Reduce

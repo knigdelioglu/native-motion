@@ -476,13 +476,19 @@
       "id": 16,
       "name": "MotionSelect",
       "states": [
-        "to-be-defined-before-implementation"
+        "selected",
+        "disabledOption",
+        "externalSelection",
+        "keyboard",
+        "rtl",
+        "focus",
+        "readOnly"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionSelect.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -500,13 +506,18 @@
       "id": 17,
       "name": "MotionMenu",
       "states": [
-        "to-be-defined-before-implementation"
+        "available",
+        "disabledOption",
+        "destructive",
+        "keyboard",
+        "readOnly",
+        "rtl"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionMenu.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -524,13 +535,21 @@
       "id": 18,
       "name": "MotionDialog",
       "states": [
-        "to-be-defined-before-implementation"
+        "presented",
+        "dismissed",
+        "confirm",
+        "cancel",
+        "loading",
+        "disabled",
+        "keyboard",
+        "focus",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionDialog.swift"
         },
         "flutter": {
           "implementation": "planned",
