@@ -15,7 +15,7 @@ export function MotionProgress({label,value,detail}:{
   {fraction===null?<ActivityIndicator accessibilityLabel="In progress" color={p.accent}/>:
   <View accessibilityRole="progressbar" accessibilityValue={{min:0,max:100,now:Math.round(fraction*100)}}
     style={{height:7,borderRadius:4,backgroundColor:p.border,overflow:'hidden'}}>
-    <View style={{height:7,width:(fraction*100)+'%',backgroundColor:p.accent}}/>
+    <View style={{height:7,width:(String(fraction*100)+'%') as `${number}%`,backgroundColor:p.accent}}/>
   </View>}
   {detail?<Text style={{color:p.secondaryText,marginTop:8}}>{detail}</Text>:null}
  </MotionPanel>;

@@ -33,7 +33,7 @@ export function MotionElasticSlider({label,value,onChange,onCommit,minimum=0,max
    onResponderTerminate={()=>setDraft(null)}
    style={{height:48,justifyContent:'center',opacity:disabled?0.5:1}}>
    <View style={{height:5,borderRadius:3,backgroundColor:p.border}} />
-   <View style={{height:5,borderRadius:3,backgroundColor:p.accent,position:'absolute',left:0,width:(scale.progress(shown)*100)+'%'}}/>
+   <View style={{height:5,borderRadius:3,backgroundColor:p.accent,position:'absolute',left:0,width:width*scale.progress(shown)}}/>
   </View>
  </MotionPanel>;
 }
