@@ -31,6 +31,8 @@ and mandatory acceptance gates are defined separately in each plan.
 | `MotionExpandableCard` | Host-controlled disclosure card with optional subtitle and arbitrary interactive content |
 | `MotionElasticSlider` | Gesture + accessibility-adjustable value input with bounded steps and elastic edges |
 | `MotionStatusIndicator` | Passive, accessible feedback with neutral/working/success/warning/failure |
+| `MotionToggle` | Compact two-state native toggle-button with host-owned state (SwiftUI) |
+| `MotionCheckbox` | Native tri-state checkbox (checked/unchecked/mixed), host-controlled (SwiftUI) |
 
 Supporting these are semantic motion presets (`responsive`, `gentle`,
 `morph`, `settle`), light/dark palette tokens, layout dimensions, Reduce
