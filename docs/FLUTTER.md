@@ -6,9 +6,11 @@ Native Motion is a multi-renderer design system. SwiftUI and Flutter do
 ## First stage
 
 `packages/flutter` supplies a Flutter package and host-independent catalog
-built entirely with Flutter SDK widgets. The first four components are `MotionButton`, `MotionSegmentedControl`,
-`MotionExpandableCard` and `MotionStatusIndicator`.
-`MotionElasticSlider` is the final core-five Flutter parity gap.
+built entirely with Flutter SDK widgets. The five core components are `MotionButton`,
+`MotionSegmentedControl`, `MotionExpandableCard`,
+`MotionElasticSlider`, and `MotionStatusIndicator`. This means the core
+API family is implemented in both renderers, **not** that their visual and
+on-device accessibility behavior has been fully qualified.
 
 The visual palette and layout metrics use the established Swift renderer as
 the reference. Tests compare every semantic color against the checked-in
@@ -52,8 +54,20 @@ The Flutter package remains marked experimental until those criteria hold.
 |---|---|---|---|
 | MotionSegmentedControl | `selection: String`, `onChanged(String)` | Touch/hover, overflow scroll, focus, left/right keyboard navigation with RTL and disabled-skip | Flutter animates individual segment backgrounds; SwiftUI uses matched-geometry highlight |
 | MotionExpandableCard | `expanded: bool`, `onChanged(bool)` | Native header button, nested independent controls, disclosure semantics | Flutter AnimatedSize and rotation replace SwiftUI layout spring |
-| MotionElasticSlider | Planned for next parity PR | Not available in Flutter yet | Do not advertise as implemented |
+| MotionElasticSlider | `value: double`, `onChanged(double)`, optional edit/commit callbacks | Pointer drag/tap, accessible incremental adjustment, physical RTL arrows, touch hit target and constrained overdrag | Flutter draws the track/thumb using native Stack + gesture arena, with explicitly suppressed stretch under Reduce Motion; cannot guarantee SwiftUI spring identity |
 
 When callbacks are null, controls are read-only; displayed state remains
 host-owned. Their automatic tests are not a substitute for TalkBack/VoiceOver,
 keyboard-on-device and real frame pacing measurements.
+
+### Discrete-scale parity
+
+Both renderers clamp invalid numbers to a deterministic minimum, snap to the
+nearest discrete detent, and include a short final interval when a range is not
+a multiple of its step. RTL reverses physical slider direction once. The host
+owns the current numeric value; gesture commit reports the last proposed value
+even when a host update arrives on the next frame.
+
+These semantics are verified by Flutter range-model and widget tests. Actual
+device-level drag hitches, screen-reader behavior and contrast remain open
+for v0.2 certification.

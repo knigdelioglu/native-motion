@@ -132,9 +132,9 @@
           "source": "Sources/NativeMotion/SwiftUI/MotionElasticSlider.swift"
         },
         "flutter": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/flutter/lib/src/widgets/motion_elastic_slider.dart"
         },
         "compose": {
           "implementation": "planned",
