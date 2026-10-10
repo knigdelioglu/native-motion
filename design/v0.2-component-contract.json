@@ -323,13 +323,18 @@
       "id": 11,
       "name": "MotionRadioGroup",
       "states": [
-        "to-be-defined-before-implementation"
+        "singleSelection",
+        "disabledOption",
+        "keyboard",
+        "rtl",
+        "focus",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionRadioGroup.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -347,13 +352,17 @@
       "id": 12,
       "name": "MotionSwitch",
       "states": [
-        "to-be-defined-before-implementation"
+        "on",
+        "off",
+        "disabled",
+        "keyboard",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionSwitch.swift"
         },
         "flutter": {
           "implementation": "planned",

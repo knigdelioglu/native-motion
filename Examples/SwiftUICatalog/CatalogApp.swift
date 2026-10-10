@@ -30,6 +30,8 @@ private struct CatalogView: View {
     @State private var forceLargeText = false
     @State private var compactSelection = false
     @State private var selectionCheck: MotionCheckboxState = .mixed
+    @State private var radioSelection = "all"
+    @State private var backgroundSync = true
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var systemDynamicType
 
@@ -193,6 +195,36 @@ private struct CatalogView: View {
                         selectionCheck = .mixed
                     }
                     Text("Checkbox: \(selectionCheck.rawValue)")
+                        .font(.footnote).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionRadioGroup").font(.title2.bold())
+                    MotionRadioGroup(
+                        "Choose a category",
+                        options: [
+                            MotionRadioOption("all", title: "All"),
+                            MotionRadioOption("new", title: "New"),
+                            MotionRadioOption("blocked", title: "Unavailable", isEnabled: false),
+                            MotionRadioOption("old", title: "Archived")
+                        ],
+                        selection: $radioSelection
+                    )
+                    Text("Selection: \(radioSelection)")
+                        .font(.footnote).foregroundStyle(.secondary)
+                    Text("On macOS use keyboard arrows; disabled items are skipped.")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionSwitch").font(.title2.bold())
+                    MotionSwitch(
+                        "Background synchronization",
+                        detail: "Native platform switch with controlled state",
+                        isOn: $backgroundSync
+                    )
+                    MotionSwitch("Read-only switch", isOn: .constant(false), isEnabled: false)
+                    Text("Synchronization: \(backgroundSync ? "On" : "Off")")
                         .font(.footnote).foregroundStyle(.secondary)
                 }
 
