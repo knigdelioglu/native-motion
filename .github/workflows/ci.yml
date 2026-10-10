@@ -35,7 +35,7 @@ jobs:
         run: swift run -c release NativeMotionVisualAudit artifacts/visual
       - name: Measure value-model performance (diagnostic, no speed threshold)
         run: |
-          mkdir -p .artifacts
+          mkdir -p artifacts
           swift run -c release NativeMotionBenchmark --iterations 100000 > artifacts/benchmark.json
           cat artifacts/benchmark.json
       - name: Upload macOS visual audit and benchmark
