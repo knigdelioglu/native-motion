@@ -79,7 +79,7 @@ private enum VisualAudit {
         let appearance: ColorScheme = scenario == .dark ? .dark : .light
         let content = AuditScene(scenario: scenario)
             .environment(\.colorScheme, appearance)
-            .environment(\.accessibilityReduceMotion, scenario == .reducedMotion)
+            .nativeMotionPreviewReduceMotion(scenario == .reducedMotion)
             .environment(\.dynamicTypeSize, scenario == .largeText ? .accessibility1 : .large)
         let renderer = ImageRenderer(content: content)
         renderer.scale = 2
@@ -90,7 +90,7 @@ private enum VisualAudit {
                 .representation(using: .png, properties: [:]), bytes.count > 15_000 else {
             throw VisualAuditError.rendering("PNG is missing or suspiciously small: \(scenario.rawValue)")
         }
-        try bytes.write(to: output, options: .atomic)
+        try bytes.write(to: output, options: Data.WritingOptions.atomic)
         return image
     }
 

@@ -25,7 +25,6 @@ private struct CatalogView: View {
     @State private var forceReducedMotion = false
     @State private var forceLargeText = false
     @Environment(\.colorScheme) private var colorScheme
-    @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
     @Environment(\.dynamicTypeSize) private var systemDynamicType
 
     private var requestedScheme: ColorScheme? {
@@ -175,7 +174,7 @@ private struct CatalogView: View {
         }
         .background(NativeMotionTheme.color(.background, colorScheme: requestedScheme ?? colorScheme))
         .preferredColorScheme(requestedScheme)
-        .environment(\.accessibilityReduceMotion, systemReduceMotion || forceReducedMotion)
+        .nativeMotionPreviewReduceMotion(forceReducedMotion)
         .environment(\.dynamicTypeSize, forceLargeText ? .accessibility1 : systemDynamicType)
     }
 }

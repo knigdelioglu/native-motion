@@ -32,7 +32,9 @@ public struct MotionSegmentedControl: View {
     @FocusState private var focusedID: String?
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.layoutDirection) private var layoutDirection
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
+    @Environment(\.nativeMotionPreviewReduceMotion) private var previewReduceMotion
+    private var reduceMotion: Bool { systemReduceMotion || previewReduceMotion }
     @ScaledMetric(relativeTo: .body) private var minimumHeight: CGFloat = 40
 
     public init(

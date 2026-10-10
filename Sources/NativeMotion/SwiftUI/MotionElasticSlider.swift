@@ -17,7 +17,9 @@ public struct MotionElasticSlider: View {
     @State private var edgeDisplacement: CGFloat = 0
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.layoutDirection) private var layoutDirection
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
+    @Environment(\.nativeMotionPreviewReduceMotion) private var previewReduceMotion
+    private var reduceMotion: Bool { systemReduceMotion || previewReduceMotion }
     @Environment(\.isEnabled) private var environmentEnabled
     @ScaledMetric(relativeTo: .body) private var thumbSize: CGFloat = 28
     @ScaledMetric(relativeTo: .body) private var hitHeight: CGFloat = 44
