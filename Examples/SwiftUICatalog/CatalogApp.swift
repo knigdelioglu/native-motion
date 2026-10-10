@@ -58,6 +58,11 @@ private struct CatalogView: View {
     @State private var accordionExpanded: Set<String> = ["general"]
     @State private var accordionAllowsMultiple = false
     @State private var nestedDisclosureExpanded = false
+    @State private var surfaceDrawerOpen = false
+    @State private var surfaceSheetOpen = false
+    @State private var surfaceBottomOpen = false
+    @State private var surfaceBusy = false
+    @State private var surfaceDetent: MotionBottomDetent = .medium
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var systemDynamicType
 
@@ -549,6 +554,43 @@ private struct CatalogView: View {
                             Text("Details for \(id)")
                         }
                     }
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("v0.5 · MotionDrawer, MotionSheet, MotionBottomSheet")
+                        .font(.title2.bold())
+                    Toggle("Simulate busy overlay", isOn: $surfaceBusy)
+                    MotionDrawer(
+                        "Navigation", isPresented: $surfaceDrawerOpen,
+                        isBusy: surfaceBusy
+                    ) {
+                        MotionButton("Open side drawer", variant: .secondary) {
+                            surfaceDrawerOpen = true
+                        }
+                    } drawerContent: {
+                        MotionButton("Nested navigation", variant: .secondary) {
+                            actionCount += 1
+                        }
+                    }
+                    MotionSheet(
+                        "Preferences", isPresented: $surfaceSheetOpen,
+                        isBusy: surfaceBusy
+                    ) {
+                        Text("Open adaptive sheet")
+                    } content: {
+                        Text("Native sheet content and explicit dismissal.")
+                    }
+                    MotionBottomSheet(
+                        "Options", isPresented: $surfaceBottomOpen,
+                        detent: $surfaceDetent, isBusy: surfaceBusy
+                    ) {
+                        Text("Open bottom sheet")
+                    } content: {
+                        Text("Use the native drag indicator on iOS.")
+                        Text("Detent: \\(surfaceDetent.rawValue)")
+                    }
+                    Text("Busy blocks user dismissal; the host controls completion.")
+                        .font(.caption).foregroundStyle(.secondary)
                 }
 
                 VStack(alignment: .leading, spacing: 12) {

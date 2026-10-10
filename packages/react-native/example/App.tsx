@@ -6,7 +6,7 @@ import {
  MotionToggle,MotionCheckbox,MotionRadioGroup,MotionSwitch,MotionTextField,
  MotionSearchField,MotionNumberField,MotionSelect,MotionMenu,MotionDialog,
  MotionPopover,MotionTooltip,MotionTabs,MotionProgress,MotionToast,MotionSkeleton,MotionStepper,
- MotionAccordion,MotionDisclosureGroup,
+ MotionAccordion,MotionDisclosureGroup,MotionDrawer,MotionSheet,MotionBottomSheet,
  type CheckboxState, type MotionToastKind,
 } from '@native-motion/react-native';
 
@@ -36,6 +36,11 @@ export default function App() {
  const [accordionOpen,setAccordionOpen]=useState<string[]>(['general']);
  const [multipleOpen,setMultipleOpen]=useState(false);
  const [nestedOpen,setNestedOpen]=useState(false);
+ const [drawerOpen,setDrawerOpen]=useState(false);
+ const [sheetOpen,setSheetOpen]=useState(false);
+ const [bottomOpen,setBottomOpen]=useState(false);
+ const [bottomDetent,setBottomDetent]=useState<'compact'|'medium'|'expanded'>('medium');
+ const [overlayBusy,setOverlayBusy]=useState(false);
  const section=(heading:string,children:React.ReactNode)=>
   <View style={{gap:12,paddingVertical:16,borderBottomWidth:1,borderColor:'#BBC5D4'}}>
     <Text accessibilityRole="header" style={{fontSize:19,fontWeight:'700'}}>{heading}</Text>{children}
@@ -87,6 +92,13 @@ export default function App() {
        </View>}
      </MotionAccordion>
    </>)}
+   {section('v0.5 · Drawer, Sheet, BottomSheet (28–30)',<>
+     <MotionSwitch label="Simulate busy operation" value={overlayBusy} onChange={setOverlayBusy}/>
+     <MotionButton label="Open drawer" onPress={()=>setDrawerOpen(true)}/>
+     <MotionButton label="Open adaptive sheet" onPress={()=>setSheetOpen(true)}/>
+     <MotionButton label="Open bottom sheet" onPress={()=>setBottomOpen(true)}/>
+     <Text>Bottom detent: {bottomDetent}. Drag the handle or use screen-reader adjustment.</Text>
+   </>)}
    {section('Native overlays (17–20)',<>
      <MotionMenu label="More actions" actions={[{id:'share',label:'Share',onPress:()=>setMenuResult('Share')}]}/>
      <MotionButton label="Open dialog" onPress={()=>setDialogOpen(true)}/>
@@ -107,6 +119,19 @@ export default function App() {
      <MotionToggle label="Allow future step" value={future} onChange={setFuture}/>
      <MotionButton label="Mark step completed" onPress={()=>setCompleted(prev=>new Set([...prev,current]))}/>
    </>)}
+   <MotionDrawer label="Navigation" visible={drawerOpen}
+     onDismiss={()=>setDrawerOpen(false)} busy={overlayBusy}>
+     <MotionButton label="Home" onPress={()=>setMenuResult('Home')}/>
+   </MotionDrawer>
+   <MotionSheet label="Preferences" visible={sheetOpen}
+     onDismiss={()=>setSheetOpen(false)} busy={overlayBusy}>
+     <Text>Nested content and independently controlled operation.</Text>
+   </MotionSheet>
+   <MotionBottomSheet label="Mobile options" visible={bottomOpen}
+     onDismiss={()=>setBottomOpen(false)} busy={overlayBusy}
+     detent={bottomDetent} onDetentChange={setBottomDetent}>
+     <Text>Try drag handle and Android Back. Busy state prevents dismissal.</Text>
+   </MotionBottomSheet>
    <MotionDialog title="Confirm operation" visible={dialogOpen} onDismiss={()=>setDialogOpen(false)}
      onConfirm={()=>{setDialogOpen(false);setToastOpen(true);}}><Text>Host owns completion.</Text></MotionDialog>
   </ScrollView>

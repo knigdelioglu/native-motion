@@ -37,3 +37,14 @@ source/test coverage in the same behavior-family PR, or an explicit
 `planned` exception that must be resolved before stable release.
 Compose is separately beta-scoped. React Native is not waived by default.
 A typechecked sample Expo screen is required in addition to API exports.
+
+## Flutter development freeze (user-requested, October 2026)
+
+For current v0.5 implementation work: **do not edit `packages/flutter/`**.
+New components must be independently implemented in **SwiftUI and React Native
++ Expo** with corresponding source/tests; mark Flutter as `planned` in the
+additive contract even if a compatible conceptual API exists. Existing Flutter
+source/tests remain intact. Flutter parity will be implemented in a separate
+session after reviewing mature SwiftUI/RN semantics. This is a temporary
+workflow exception, not a release claim: **v0.5.0 must not be tagged as
+cross-platform stable** while required Flutter release gates are outstanding.

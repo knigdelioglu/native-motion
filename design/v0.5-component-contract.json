@@ -70,9 +70,9 @@
       "name": "MotionDrawer",
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionDrawer.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -80,9 +80,9 @@
           "source": null
         },
         "react_native": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionDrawer.tsx"
         },
         "compose": {
           "implementation": "planned",
@@ -96,9 +96,9 @@
       "name": "MotionSheet",
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionSheet.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -106,9 +106,9 @@
           "source": null
         },
         "react_native": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionSheet.tsx"
         },
         "compose": {
           "implementation": "planned",
@@ -122,9 +122,9 @@
       "name": "MotionBottomSheet",
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionBottomSheet.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -132,9 +132,9 @@
           "source": null
         },
         "react_native": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionBottomSheet.tsx"
         },
         "compose": {
           "implementation": "planned",
