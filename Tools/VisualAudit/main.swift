@@ -79,6 +79,7 @@ private enum VisualAudit {
     static func capture(_ scenario: MotionQualityScenario, to output: URL) throws -> CGImage {
         let appearance: ColorScheme = scenario == .dark ? .dark : .light
         let content = AuditScene(scenario: scenario)
+            .nativeMotionOffscreenPreview()
             .environment(\.colorScheme, appearance)
             .nativeMotionPreviewReduceMotion(scenario == .reducedMotion)
             .environment(\.dynamicTypeSize, scenario == .largeText ? .accessibility1 : .large)

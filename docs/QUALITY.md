@@ -21,6 +21,12 @@ swift run -c release NativeMotionVisualAudit artifacts/visual
 The macOS tool captures four rendered SwiftUI states at 2× scale:
 `light.png`, `dark.png`, `reducedMotion.png`, `largeText.png`.
 CI uploads these images as downloadable workflow artifacts for human review.
+The offscreen SwiftUI renderer cannot draw an interactive `ScrollViewReader`
+or its indeterminate `ProgressView` consistently. Audit mode therefore
+uses the **same underlying segment buttons without scrolling**, and a static
+hourglass instead of a spinner. This snapshot-only adaptation is not active
+in actual applications. Scrolling, loading animation and real keyboard
+behavior still require native manual testing.
 
 **Important:** Capturing images is *not* the same thing as comparing against a
 previously approved screenshot. CI currently verifies successful capture,
