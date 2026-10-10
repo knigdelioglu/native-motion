@@ -49,7 +49,8 @@ tracked separately. Do not label experimental platform adapters as stable.
 ## v0.2 execution
 - [x] Begin machine-verifiable component/renderer coverage contract
 - [x] Flutter segmented selection and expandable disclosure implementations
-- [ ] Flutter elastic slider and remaining v0.2 interaction components
+- [x] Flutter elastic slider source, range model and widget tests
+- [ ] Remaining v0.2 interaction components
 - [ ] Device-level accessibility, screenshot approval, and performance review
 
 [Detailed v0.2 implementation tracker](../plan/0.2-progress.md)

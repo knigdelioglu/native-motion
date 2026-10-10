@@ -20,6 +20,9 @@ class _NativeMotionGalleryState extends State<NativeMotionGallery> {
   bool showCardDetails = false;
   bool showSecondCard = true;
   bool rtlPreview = false;
+  double sliderValue = 45;
+  bool sliderEditing = false;
+  int sliderCommits = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -135,6 +138,28 @@ class _NativeMotionGalleryState extends State<NativeMotionGallery> {
                   expanded: showSecondCard,
                   onChanged: (bool next) => setState(() { showSecondCard = next; }),
                   child: const Text('Expansion state is independent.'),
+                ),
+                const SizedBox(height: 28),
+                const Text('MotionElasticSlider'),
+                const SizedBox(height: 12),
+                Directionality(
+                  textDirection: rtlPreview ? TextDirection.rtl : TextDirection.ltr,
+                  child: MotionElasticSlider(
+                    label: 'Output level',
+                    value: sliderValue,
+                    scale: MotionSliderScale(minimum: 0, maximum: 100, step: 5),
+                    marks: const <double>[0, 25, 50, 75, 100],
+                    onChanged: (double next) => setState(() { sliderValue = next; }),
+                    onEditingChanged: (bool editing) => setState(() { sliderEditing = editing; }),
+                    onCommit: (double _) => setState(() { sliderCommits++; }),
+                  ),
+                ),
+                Text('Drag: ${sliderEditing ? "active" : "idle"} · commits: $sliderCommits'),
+                const SizedBox(height: 12),
+                MotionElasticSlider(
+                  label: 'Read-only',
+                  value: 20,
+                  onChanged: null,
                 ),
                 const SizedBox(height: 28),
                 const Text('MotionStatusIndicator'),

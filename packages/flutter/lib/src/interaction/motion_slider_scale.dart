@@ -1,5 +1,3 @@
-import 'dart:math' as math;
-
 /// Deterministic, platform-independent numeric scale mirroring the SwiftUI
 /// MotionSliderScale contract. The final, shorter interval is selectable.
 class MotionSliderScale {
