@@ -179,6 +179,7 @@ class _MotionElasticSliderState extends State<MotionElasticSlider>
             canRequestFocus: _enabled,
             onKeyEvent: _onKey,
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Row(
