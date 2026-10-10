@@ -36,8 +36,8 @@ Motion adaptation and an interactive component catalog.
 ## Flutter (experimental)
 
 A native Flutter library, tests, and independent gallery are available in
-[packages/flutter](packages/flutter/README.md). It implements `MotionButton`
-and `MotionStatusIndicator` with native Flutter interaction, controlled states,
+[packages/flutter](packages/flutter/README.md). It implements `MotionButton`, `MotionSegmentedControl`,
+`MotionExpandableCard` and `MotionStatusIndicator` with native Flutter interaction, controlled states,
 reduced-motion handling, and cross-renderer token parity tests.
 
 ```yaml

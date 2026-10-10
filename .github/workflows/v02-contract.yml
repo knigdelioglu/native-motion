@@ -1,0 +1,35 @@
+name: v0.2 Component Contract
+
+on:
+  pull_request:
+    paths:
+      - 'design/v0.2-component-contract*.json'
+      - 'plan/0.2*.md'
+      - 'tools/check_v02_contract.py'
+      - 'packages/flutter/lib/src/widgets/**'
+      - 'Sources/NativeMotion/SwiftUI/**'
+      - '.github/workflows/v02-contract.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'design/v0.2-component-contract*.json'
+      - 'plan/0.2*.md'
+      - 'tools/check_v02_contract.py'
+      - 'packages/flutter/lib/src/widgets/**'
+      - 'Sources/NativeMotion/SwiftUI/**'
+      - '.github/workflows/v02-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Check v0.2 component inventory
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check schema JSON syntax
+        run: python3 -m json.tool design/v0.2-component-contract.schema.json > /dev/null
+      - name: Verify inventory and source evidence
+        run: python3 tools/check_v02_contract.py

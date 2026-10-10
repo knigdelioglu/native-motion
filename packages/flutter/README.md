@@ -22,6 +22,11 @@ Import with `import 'package:native_motion/native_motion.dart';`.
 - `MotionButton`: primary/secondary/ghost/destructive; small/medium/large;
   idle/loading/success/failure; host-owned callback; duplicate taps blocked
   while loading; native pointer/keyboard focus.
+- `MotionSegmentedControl`: host-controlled string ID selection, horizontal
+  overflow, disabled options, native keyboard arrow handling with RTL direction,
+  light/dark theme and reduced-motion animation policy.
+- `MotionExpandableCard`: controlled disclosure header, optional subtitle,
+  independent nested actions, accessible expanded/collapsed value.
 - `MotionStatusIndicator`: neutral/processing/success/warning/failure;
   label, optional detail and localizable status text; status is host-controlled.
 - Semantic color, spacing and radius tokens with repository-level parity tests
@@ -66,5 +71,7 @@ No third-party state manager, navigation package, or animation engine is used.
 ## Status
 
 Experimental: package APIs may change before the first stable tag.
-Remaining: segmented control, expandable card, elastic slider, Flutter golden
+Remaining: elastic slider, additional 0.2 controls, Flutter golden
 tests, and device-level accessibility/performance review.
+The two disclosure/selection components use their own native Flutter motion
+parameters; shared element travel and exact SwiftUI spring parity are not claimed.

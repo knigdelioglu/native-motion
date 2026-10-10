@@ -16,6 +16,10 @@ class _NativeMotionGalleryState extends State<NativeMotionGallery> {
   int presses = 0;
   MotionButtonPhase phase = MotionButtonPhase.idle;
   MotionStatus status = MotionStatus.neutral;
+  String section = 'overview';
+  bool showCardDetails = false;
+  bool showSecondCard = true;
+  bool rtlPreview = false;
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +83,58 @@ class _NativeMotionGalleryState extends State<NativeMotionGallery> {
                   size: MotionButtonSize.large,
                   phase: phase,
                   onPressed: () => setState(() { presses++; }),
+                ),
+                const SizedBox(height: 28),
+                const Text('MotionSegmentedControl'),
+                const SizedBox(height: 12),
+                SwitchListTile(
+                  title: const Text('RTL segmented-control preview'),
+                  value: rtlPreview,
+                  onChanged: (bool next) => setState(() { rtlPreview = next; }),
+                ),
+                Directionality(
+                  textDirection: rtlPreview ? TextDirection.rtl : TextDirection.ltr,
+                  child: MotionSegmentedControl(
+                    label: 'Catalog section',
+                    selection: section,
+                    onChanged: (String next) => setState(() { section = next; }),
+                    segments: const <MotionSegment>[
+                      MotionSegment(id: 'overview', label: 'Overview', icon: Icons.dashboard_outlined),
+                      MotionSegment(id: 'recent', label: 'Recent'),
+                      MotionSegment(id: 'blocked', label: 'Disabled', enabled: false),
+                      MotionSegment(id: 'details', label: 'Details', icon: Icons.tune),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text('Selected: $section'),
+                const SizedBox(height: 24),
+                const Text('MotionExpandableCard'),
+                const SizedBox(height: 12),
+                MotionExpandableCard(
+                  title: 'Interaction details',
+                  subtitle: 'Host-controlled expansion',
+                  expanded: showCardDetails,
+                  onChanged: (bool next) => setState(() { showCardDetails = next; }),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      const Text('Expanded content keeps nested actions focusable.'),
+                      const SizedBox(height: 12),
+                      MotionButton(
+                        label: 'Nested action',
+                        variant: MotionButtonVariant.secondary,
+                        onPressed: () => setState(() { presses++; }),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 12),
+                MotionExpandableCard(
+                  title: 'Independent disclosure',
+                  expanded: showSecondCard,
+                  onChanged: (bool next) => setState(() { showSecondCard = next; }),
+                  child: const Text('Expansion state is independent.'),
                 ),
                 const SizedBox(height: 28),
                 const Text('MotionStatusIndicator'),
