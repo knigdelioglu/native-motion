@@ -120,7 +120,7 @@ public struct MotionNumberField: View {
             if !focused { refreshDraft() }
         }
         .onChange(of: focused) { isFocused in
-            if !isFocused && !draft.isEmpty { submit() }
+            if !isFocused { submit() }
         }
     }
 }

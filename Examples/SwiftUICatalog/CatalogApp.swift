@@ -32,6 +32,10 @@ private struct CatalogView: View {
     @State private var selectionCheck: MotionCheckboxState = .mixed
     @State private var radioSelection = "all"
     @State private var backgroundSync = true
+    @State private var fieldName = ""
+    @State private var fieldSearch = ""
+    @State private var fieldAmount = 12.5
+    @State private var formSubmitted = 0
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var systemDynamicType
 
@@ -226,6 +230,55 @@ private struct CatalogView: View {
                     MotionSwitch("Read-only switch", isOn: .constant(false), isEnabled: false)
                     Text("Synchronization: \(backgroundSync ? "On" : "Off")")
                         .font(.footnote).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionTextField").font(.title2.bold())
+                    MotionTextField(
+                        "Display name",
+                        placeholder: "Enter a name",
+                        text: $fieldName,
+                        feedback: fieldName.isEmpty
+                            ? MotionFieldFeedback("A name is required", style: .error)
+                            : MotionFieldFeedback("Looks good", style: .success)
+                    ) { formSubmitted += 1 }
+                    MotionTextField(
+                        "Read only",
+                        text: .constant("Unavailable"),
+                        isEnabled: false
+                    )
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionSearchField").font(.title2.bold())
+                    MotionSearchField(
+                        "Find components",
+                        placeholder: "Search...",
+                        query: $fieldSearch,
+                        feedback: MotionFieldFeedback(
+                            "Search only updates local host state",
+                            style: .hint
+                        )
+                    ) { formSubmitted += 1 }
+                    Text("Query: \(fieldSearch)")
+                        .font(.footnote).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionNumberField").font(.title2.bold())
+                    MotionNumberField(
+                        "Quantity",
+                        value: $fieldAmount,
+                        scale: MotionSliderScale(minimum: 0, maximum: 95, step: 5),
+                        feedback: MotionFieldFeedback(
+                            "Uses the active system number locale",
+                            style: .hint
+                        )
+                    ) { _ in formSubmitted += 1 }
+                    Text("Committed value: \(fieldAmount) · submits: \(formSubmitted)")
+                        .font(.footnote).foregroundStyle(.secondary)
+                    Text("Try a comma decimal with the Turkish locale, invalid text, and +/- at the limits.")
+                        .font(.caption).foregroundStyle(.secondary)
                 }
 
                 VStack(alignment: .leading, spacing: 12) {
