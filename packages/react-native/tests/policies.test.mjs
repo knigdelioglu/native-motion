@@ -77,3 +77,16 @@ test('v0.5 bottom detent and drag steps never auto-complete work', () => {
  assert.ok(heightFraction('compact')<heightFraction('medium'));
  assert.ok(heightFraction('medium')<heightFraction('expanded'));
 });
+
+import {visibleCommands,canExecuteCommand} from '../src/commandPolicies.ts';
+test('v0.5 searchable commands support empty and case-insensitive filters',()=>{
+ const commands=[{id:'save',title:'Save Document',keywords:['write']},
+   {id:'export',title:'Export PDF',keywords:['download'],disabled:true}];
+ assert.deepEqual(visibleCommands(commands,'').map(c=>c.id),['save','export']);
+ assert.deepEqual(visibleCommands(commands,'  sAvE ').map(c=>c.id),['save']);
+ assert.deepEqual(visibleCommands(commands,'DOWNLOAD').map(c=>c.id),['export']);
+ assert.deepEqual(visibleCommands(commands,'missing'),[]);
+ assert.equal(canExecuteCommand('save',commands,true),true);
+ assert.equal(canExecuteCommand('export',commands,true),false);
+ assert.equal(canExecuteCommand('save',commands,false),false);
+});

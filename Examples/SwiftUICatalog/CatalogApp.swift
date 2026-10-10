@@ -63,6 +63,8 @@ private struct CatalogView: View {
     @State private var surfaceBottomOpen = false
     @State private var surfaceBusy = false
     @State private var surfaceDetent: MotionBottomDetent = .medium
+    @State private var commandMenuOpen = false
+    @State private var commandMenuQuery = ""
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var systemDynamicType
 
@@ -591,6 +593,35 @@ private struct CatalogView: View {
                     }
                     Text("Busy blocks user dismissal; the host controls completion.")
                         .font(.caption).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("v0.5 · MotionContextMenu and MotionCommandMenu")
+                        .font(.title2.bold())
+                    MotionContextMenu("Document actions", actions: [
+                        MotionMenuAction("copy", title: "Copy") {
+                            actionCount += 1
+                        },
+                        MotionMenuAction("blocked", title: "Unavailable", isEnabled: false) {}
+                    ]) {
+                        Text("Right click or long press document")
+                    }
+                    MotionCommandMenu(
+                        "Command palette",
+                        commands: [
+                            MotionCommandItem("save", title: "Save", keywords: ["write"]) {
+                                actionCount += 1
+                            },
+                            MotionCommandItem("share", title: "Share") {
+                                actionCount += 1
+                            },
+                            MotionCommandItem("blocked", title: "Unavailable", isEnabled: false) {}
+                        ],
+                        isPresented: $commandMenuOpen,
+                        query: $commandMenuQuery
+                    ) {
+                        Text("Open searchable command menu")
+                    }
                 }
 
                 VStack(alignment: .leading, spacing: 12) {
