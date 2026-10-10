@@ -1,5 +1,19 @@
 # Roadmap
 
+## Versioned plans
+
+The issue/PR history below records work already completed or outstanding. The
+following plans describe **future cumulative version targets**, not claims of
+completed releases:
+
+- [v0.2 — foundation, 25 components](../plan/0.2.md)
+- [v0.5 — advanced UI, 55 components / 6 blocks](../plan/0.5.md)
+- [v1.0 — mature system, 105 components / 22 blocks](../plan/1.0.md)
+
+Counts refer to distinct conceptual components; renderer implementations are
+tracked separately. Do not label experimental platform adapters as stable.
+
+
 ## PR 1 · Foundation
 - [x] Swift Package with original semantic design and motion tokens
 - [x] Native SwiftUI MotionButton and interactive catalog
