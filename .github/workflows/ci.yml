@@ -32,7 +32,12 @@ jobs:
         run: swift build -c release
       - name: Capture native SwiftUI visual audit
         if: runner.os == 'macOS'
-        run: swift run -c release NativeMotionVisualAudit artifacts/visual
+        run: |
+          swift run -c release NativeMotionVisualAudit artifacts/visual
+          # Smoke-test the approved-baseline comparator against a fresh capture
+          # from the exact same runner. This is NOT an approved visual golden.
+          swift run -c release NativeMotionVisualAudit artifacts/self-check --baseline artifacts/visual
+          rm -rf artifacts/self-check
       - name: Measure value-model performance (diagnostic, no speed threshold)
         run: |
           mkdir -p artifacts
