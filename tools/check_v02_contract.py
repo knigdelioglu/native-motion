@@ -43,14 +43,12 @@ def main() -> None:
     names = [component["name"] for component in components]
     ensure(len(set(names)) == len(names), "Duplicate component names")
 
-    plan_entries = [
-        (int(identifier), name)
-        for identifier, name in re.findall(
-            r"^\\|\\s*(\\d+)\\s*\\|[^\\n]*?\\|\\s*`(Motion[A-Za-z0-9]+)`\\s*\\|",
-            plan,
-            flags=re.MULTILINE,
-        )
-    ]
+    plan_entries = []
+    for line in plan.splitlines():
+        cells = [cell.strip() for cell in line.split("|")[1:-1]]
+        if (len(cells) >= 3 and cells[0].isdigit()
+                and re.fullmatch(r"`Motion[A-Za-z0-9]+`", cells[2])):
+            plan_entries.append((int(cells[0]), cells[2].strip("`")))
     ensure(len(plan_entries) == 25, f"Plan has {len(plan_entries)} indexed components")
     ensure(plan_entries == [(c["id"], c["name"]) for c in components],
            "Inventory order or identifiers differ from plan/0.2.md")
