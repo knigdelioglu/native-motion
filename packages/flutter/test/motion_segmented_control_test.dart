@@ -72,20 +72,20 @@ void main() {
   testWidgets('external selection changes update displayed selection',
       (WidgetTester tester) async {
     await tester.pumpWidget(host(selection: 'all', onChanged: (_) {}));
-    final SemanticsHandle semantics = tester.ensureSemantics();
     expect(
-      tester.getSemantics(find.byKey(const ValueKey<String>('motion-segment-all')))
-          .hasFlag(SemanticsFlag.isSelected),
+      tester.widget<Semantics>(
+        find.byKey(const ValueKey<String>('motion-segment-all')),
+      ).properties.selected,
       isTrue,
     );
     await tester.pumpWidget(host(selection: 'active', onChanged: (_) {}));
     await tester.pump(const Duration(milliseconds: 300));
     expect(
-      tester.getSemantics(find.byKey(const ValueKey<String>('motion-segment-active')))
-          .hasFlag(SemanticsFlag.isSelected),
+      tester.widget<Semantics>(
+        find.byKey(const ValueKey<String>('motion-segment-active')),
+      ).properties.selected,
       isTrue,
     );
-    semantics.dispose();
   });
 
   testWidgets('keyboard advances past disabled option without wrapping',

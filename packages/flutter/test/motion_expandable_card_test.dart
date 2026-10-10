@@ -85,15 +85,13 @@ void main() {
 
   testWidgets('header exposes a separate accessible disclosure control',
       (WidgetTester tester) async {
-    final SemanticsHandle semantics = tester.ensureSemantics();
     await tester.pumpWidget(host(expanded: false, onChanged: (_) {}));
-    final SemanticsNode node = tester.getSemantics(
+    final Semantics header = tester.widget<Semantics>(
       find.byKey(const ValueKey<String>('motion-card-header')),
     );
-    expect(node.hasFlag(SemanticsFlag.isButton), isTrue);
-    expect(node.label, 'Details');
-    expect(node.value, 'Collapsed');
-    semantics.dispose();
+    expect(header.properties.button, isTrue);
+    expect(header.properties.label, 'Details');
+    expect(header.properties.value, 'Collapsed');
   });
 
   testWidgets('large text and RTL do not overflow a narrow surface',

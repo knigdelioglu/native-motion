@@ -27,7 +27,7 @@ class MotionSegment {
 /// Overflow uses a horizontal native scroll view, and arrow keys skip disabled
 /// items without wrapping. Text direction reverses the physical key mapping.
 class MotionSegmentedControl extends StatefulWidget {
-  const MotionSegmentedControl({
+  MotionSegmentedControl({
     required this.label,
     required this.segments,
     required this.selection,
