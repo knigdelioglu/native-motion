@@ -41,6 +41,9 @@ and mandatory acceptance gates are defined separately in each plan.
 | `MotionSelect` | Native drop-down, host-controlled selection and disabled options (SwiftUI) |
 | `MotionMenu` | Native action menu, disabled/destructive items and keyboard support (SwiftUI) |
 | `MotionDialog` | Native host-controlled modal; safe cancel, confirmation and busy gating (SwiftUI) |
+| `MotionPopover` | Native anchored, externally controlled popover; adaptive compact presentation (SwiftUI) |
+| `MotionTooltip` | Native hover help and accessible touch/focus explanation (SwiftUI) |
+| `MotionTabs` | Scrollable native tab bar, disabled options and RTL keyboard navigation (SwiftUI) |
 
 Supporting these are semantic motion presets (`responsive`, `gentle`,
 `morph`, `settle`), light/dark palette tokens, layout dimensions, Reduce
