@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "Native Motion Catalog",
+    "slug": "native-motion-catalog",
+    "scheme": "native-motion-catalog",
+    "orientation": "default",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "edgeToEdgeEnabled": true
+    }
+  }
+}
