@@ -6,6 +6,7 @@ import {
  MotionToggle,MotionCheckbox,MotionRadioGroup,MotionSwitch,MotionTextField,
  MotionSearchField,MotionNumberField,MotionSelect,MotionMenu,MotionDialog,
  MotionPopover,MotionTooltip,MotionTabs,MotionProgress,MotionToast,MotionSkeleton,MotionStepper,
+ MotionAccordion,MotionDisclosureGroup,
  type CheckboxState, type MotionToastKind,
 } from '@native-motion/react-native';
 
@@ -32,6 +33,9 @@ export default function App() {
  const [current,setCurrent]=useState('review');
  const [completed,setCompleted]=useState<Set<string>>(new Set(['choose']));
  const [future,setFuture]=useState(false);
+ const [accordionOpen,setAccordionOpen]=useState<string[]>(['general']);
+ const [multipleOpen,setMultipleOpen]=useState(false);
+ const [nestedOpen,setNestedOpen]=useState(false);
  const section=(heading:string,children:React.ReactNode)=>
   <View style={{gap:12,paddingVertical:16,borderBottomWidth:1,borderColor:'#BBC5D4'}}>
     <Text accessibilityRole="header" style={{fontSize:19,fontWeight:'700'}}>{heading}</Text>{children}
@@ -67,6 +71,21 @@ export default function App() {
      <MotionTextField label="Name" value={name} onChangeText={setName} error={!name?'Name needed':undefined}/>
      <MotionSearchField label="Search" query={query} onChange={setQuery}/>
      <MotionNumberField label="Amount" value={quantity} onChange={setQuantity} minimum={0} maximum={95} step={5} locale="tr-TR"/>
+   </>)}
+   {section('v0.5 · Accordions and nested disclosure (26–27)',<>
+     <MotionToggle label="Allow multiple accordion sections" value={multipleOpen} onChange={setMultipleOpen}/>
+     <MotionAccordion label="Preferences" items={[
+       {id:'general',label:'General'},{id:'advanced',label:'Advanced'},
+       {id:'disabled',label:'Unavailable',disabled:true}
+     ]} expandedIds={accordionOpen} onChange={setAccordionOpen} allowsMultiple={multipleOpen}>
+       {id=><View style={{gap:12}}>
+         <Text>{id+' preferences'}</Text>
+         {id==='general'?<MotionDisclosureGroup label="Nested help" expanded={nestedOpen}
+           onChange={setNestedOpen}>
+           <MotionButton label="Nested action" onPress={()=>setMenuResult('Nested')}/>
+         </MotionDisclosureGroup>:null}
+       </View>}
+     </MotionAccordion>
    </>)}
    {section('Native overlays (17–20)',<>
      <MotionMenu label="More actions" actions={[{id:'share',label:'Share',onPress:()=>setMenuResult('Share')}]}/>

@@ -55,6 +55,9 @@ private struct CatalogView: View {
     @State private var workflowCurrent = "review"
     @State private var workflowCompleted: Set<String> = ["choose"]
     @State private var workflowAllowsFuture = false
+    @State private var accordionExpanded: Set<String> = ["general"]
+    @State private var accordionAllowsMultiple = false
+    @State private var nestedDisclosureExpanded = false
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var systemDynamicType
 
@@ -518,6 +521,34 @@ private struct CatalogView: View {
                         .font(.caption).foregroundStyle(.secondary)
                     Text("Previous steps are not automatically marked completed.")
                         .font(.caption).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("v0.5 · MotionAccordion and MotionDisclosureGroup").font(.title2.bold())
+                    Toggle("Allow multiple expanded sections", isOn: $accordionAllowsMultiple)
+                    MotionAccordion(
+                        "Preferences",
+                        items: [
+                            MotionAccordionItem("general", title: "General"),
+                            MotionAccordionItem("advanced", title: "Advanced"),
+                            MotionAccordionItem("blocked", title: "Unavailable", isEnabled: false)
+                        ],
+                        expandedIDs: $accordionExpanded,
+                        allowsMultiple: accordionAllowsMultiple
+                    ) { id in
+                        if id == "general" {
+                            MotionDisclosureGroup(
+                                "Nested details",
+                                isExpanded: $nestedDisclosureExpanded
+                            ) {
+                                MotionButton("Nested action", variant: .secondary) {
+                                    actionCount += 1
+                                }
+                            }
+                        } else {
+                            Text("Details for \(id)")
+                        }
+                    }
                 }
 
                 VStack(alignment: .leading, spacing: 12) {

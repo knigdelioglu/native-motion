@@ -34,3 +34,20 @@ test('workflow steps remain pending without explicit completion',()=>{
  assert.equal(stepAllowed('choose','review',ids,done,disabled,false),true);
  assert.equal(stepAllowed('send','review',ids,done,disabled,true),true);
 });
+
+import {toggleDisclosure,uniqueDisclosureIds} from '../src/disclosurePolicies.ts';
+test('v0.5 single accordion closes the previously expanded item',()=>{
+ assert.deepEqual(toggleDisclosure('b',['a'],new Set(['a','b']),false),['b']);
+ assert.deepEqual(toggleDisclosure('b',['b'],new Set(['a','b']),false),[]);
+});
+test('v0.5 multiple accordion retains independent expansion',()=>{
+ assert.deepEqual(toggleDisclosure('b',['a'],new Set(['a','b']),true),['a','b']);
+ assert.deepEqual(toggleDisclosure('a',['a','b'],new Set(['a','b']),true),['b']);
+});
+test('v0.5 disabled and missing entries cannot mutate host state',()=>{
+ const ids=new Set(['a']);
+ assert.deepEqual(toggleDisclosure('missing',['a'],ids,false),['a']);
+ assert.deepEqual(toggleDisclosure('a',['a'],ids,false,false),['a']);
+ assert.equal(uniqueDisclosureIds(['a','b']),true);
+ assert.equal(uniqueDisclosureIds(['a','a']),false);
+});

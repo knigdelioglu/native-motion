@@ -11,3 +11,6 @@ export 'src/widgets/motion_segmented_control.dart';
 export 'src/widgets/motion_expandable_card.dart';
 export 'src/interaction/motion_slider_scale.dart';
 export 'src/widgets/motion_elastic_slider.dart';
+export 'src/interaction/motion_disclosure_policy.dart';
+export 'src/widgets/motion_disclosure_group.dart';
+export 'src/widgets/motion_accordion.dart';

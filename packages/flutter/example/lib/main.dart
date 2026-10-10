@@ -23,6 +23,9 @@ class _NativeMotionGalleryState extends State<NativeMotionGallery> {
   double sliderValue = 45;
   bool sliderEditing = false;
   int sliderCommits = 0;
+  Set<String> accordionExpanded = <String>{'general'};
+  bool accordionAllowsMultiple = false;
+  bool nestedDisclosureOpen = false;
 
   @override
   Widget build(BuildContext context) {
@@ -162,6 +165,36 @@ class _NativeMotionGalleryState extends State<NativeMotionGallery> {
                   onChanged: null,
                 ),
                 const SizedBox(height: 28),
+                const Text('MotionAccordion / MotionDisclosureGroup'),
+                SwitchListTile(
+                  title: const Text('Allow multiple sections'),
+                  value: accordionAllowsMultiple,
+                  onChanged: (bool next) => setState(() {
+                    accordionAllowsMultiple = next;
+                  }),
+                ),
+                MotionAccordion(
+                  label: 'Preferences',
+                  expandedIds: accordionExpanded,
+                  allowsMultiple: accordionAllowsMultiple,
+                  items: const <MotionAccordionItem>[
+                    MotionAccordionItem(id: 'general', title: 'General'),
+                    MotionAccordionItem(id: 'advanced', title: 'Advanced'),
+                    MotionAccordionItem(id: 'blocked', title: 'Unavailable', enabled: false),
+                  ],
+                  onChanged: (Set<String> ids) => setState(() => accordionExpanded = ids),
+                  itemBuilder: (BuildContext context, String id) => id == 'general'
+                      ? MotionDisclosureGroup(
+                          title: 'Nested details',
+                          expanded: nestedDisclosureOpen,
+                          onChanged: (bool next) => setState(() {
+                            nestedDisclosureOpen = next;
+                          }),
+                          child: const Text('Nested native actions remain independent'),
+                        )
+                      : Text('Details for $id'),
+                ),
+                const SizedBox(height: 24),
                 const Text('MotionStatusIndicator'),
                 const SizedBox(height: 12),
                 DropdownButton<MotionStatus>(
