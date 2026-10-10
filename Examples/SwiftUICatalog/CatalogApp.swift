@@ -21,7 +21,19 @@ private struct CatalogView: View {
     @State private var sliderEditing = false
     @State private var sliderCommits = 0
     @State private var currentStatus: MotionStatus = .neutral
+    @State private var appearanceOverride = "system"
+    @State private var forceReducedMotion = false
+    @State private var forceLargeText = false
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.dynamicTypeSize) private var systemDynamicType
+
+    private var requestedScheme: ColorScheme? {
+        switch appearanceOverride {
+        case "light": return .light
+        case "dark": return .dark
+        default: return nil
+        }
+    }
 
     var body: some View {
         ScrollView {
@@ -30,6 +42,22 @@ private struct CatalogView: View {
                     Text("Native Motion").font(.largeTitle.bold())
                     Text("Independent native controls, visual states and gestures")
                         .foregroundStyle(.secondary)
+                }
+
+                GroupBox("Quality inspection") {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Picker("Appearance", selection: $appearanceOverride) {
+                            Text("System").tag("system")
+                            Text("Light").tag("light")
+                            Text("Dark").tag("dark")
+                        }
+                        .pickerStyle(.segmented)
+                        Toggle("Reduce Motion preview", isOn: $forceReducedMotion)
+                        Toggle("Large text preview", isOn: $forceLargeText)
+                        Text("These controls preview system accessibility preferences; use actual macOS settings for final testing.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
 
                 VStack(alignment: .leading, spacing: 12) {
@@ -144,7 +172,10 @@ private struct CatalogView: View {
             .frame(maxWidth: 600, alignment: .leading)
             .frame(maxWidth: .infinity, alignment: .top)
         }
-        .background(NativeMotionTheme.color(.background, colorScheme: colorScheme))
+        .background(NativeMotionTheme.color(.background, colorScheme: requestedScheme ?? colorScheme))
+        .preferredColorScheme(requestedScheme)
+        .nativeMotionPreviewReduceMotion(forceReducedMotion)
+        .environment(\.dynamicTypeSize, forceLargeText ? .accessibility1 : systemDynamicType)
     }
 }
 #else

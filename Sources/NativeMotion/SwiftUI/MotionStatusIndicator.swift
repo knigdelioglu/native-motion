@@ -46,7 +46,9 @@ public struct MotionStatusIndicator: View {
     private let status: MotionStatus
 
     @Environment(\.colorScheme) private var colorScheme
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
+    @Environment(\.nativeMotionPreviewReduceMotion) private var previewReduceMotion
+    private var reduceMotion: Bool { systemReduceMotion || previewReduceMotion }
 
     public init(
         _ label: LocalizedStringKey,

@@ -26,7 +26,34 @@ jobs:
           swift-version: "6.1"
       - name: Toolchain
         run: swift --version
-      - name: Test
+      - name: Test (including design-token goldens)
         run: swift test
       - name: Release build
         run: swift build -c release
+      - name: Capture native SwiftUI visual audit
+        if: runner.os == 'macOS'
+        run: |
+          swift run -c release NativeMotionVisualAudit artifacts/visual
+          # Smoke-test the approved-baseline comparator against a fresh capture
+          # from the exact same runner. This is NOT an approved visual golden.
+          swift run -c release NativeMotionVisualAudit artifacts/self-check --baseline artifacts/visual
+          rm -rf artifacts/self-check
+      - name: Measure value-model performance (diagnostic, no speed threshold)
+        run: |
+          mkdir -p artifacts
+          swift run -c release NativeMotionBenchmark --iterations 100000 > artifacts/benchmark.json
+          cat artifacts/benchmark.json
+      - name: Upload macOS visual audit and benchmark
+        if: runner.os == 'macOS' && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-motion-macos-quality
+          path: artifacts/
+          if-no-files-found: warn
+      - name: Upload Linux benchmark
+        if: runner.os == 'Linux' && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-motion-linux-benchmark
+          path: artifacts/benchmark.json
+          if-no-files-found: warn

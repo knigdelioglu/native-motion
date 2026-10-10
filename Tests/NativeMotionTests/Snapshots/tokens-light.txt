@@ -1,0 +1,17 @@
+native-motion-manifest:v1
+appearance:light
+background=#F7F8FA
+surface=#FFFFFF
+elevatedSurface=#FFFFFF
+primaryText=#171A21
+secondaryText=#526074
+accent=#245DCC
+accentText=#FFFFFF
+border=#D5DDE8
+success=#187448
+warning=#875000
+danger=#B62D39
+spacing=4,8,12,16,24,32
+radius=12,18,24
+controlHeight=36,44,52
+motion=responsive,gentle,morph,settle

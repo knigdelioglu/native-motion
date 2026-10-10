@@ -32,7 +32,10 @@ public struct MotionSegmentedControl: View {
     @FocusState private var focusedID: String?
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.layoutDirection) private var layoutDirection
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
+    @Environment(\.nativeMotionPreviewReduceMotion) private var previewReduceMotion
+    @Environment(\.nativeMotionOffscreenPreview) private var offscreenPreview
+    private var reduceMotion: Bool { systemReduceMotion || previewReduceMotion }
     @ScaledMetric(relativeTo: .body) private var minimumHeight: CGFloat = 40
 
     public init(
@@ -75,66 +78,89 @@ public struct MotionSegmentedControl: View {
     }
     #endif
 
-    public var body: some View {
-        ScrollViewReader { proxy in
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 3) {
-                    ForEach(segments) { segment in
-                        let selected = selection == segment.id
-                        Button {
-                            activate(segment)
-                        } label: {
-                            HStack(spacing: CGFloat(NativeMotionSpacing.small)) {
-                                if let icon = segment.systemImage {
-                                    Image(systemName: icon).accessibilityHidden(true)
-                                }
-                                Text(segment.title)
-                                    .fixedSize(horizontal: true, vertical: false)
-                            }
-                            .font(.system(.body, design: .default, weight: selected ? .semibold : .regular))
-                            .foregroundStyle(selected ? color(.primaryText) : color(.secondaryText))
-                            .padding(.horizontal, 14)
-                            .frame(minHeight: minimumHeight)
-                            .background {
-                                if selected {
-                                    RoundedRectangle(cornerRadius: 9, style: .continuous)
-                                        .fill(color(.surface))
-                                        .matchedGeometryEffect(id: "selected-segment", in: selectionNamespace)
-                                        .shadow(color: .black.opacity(colorScheme == .dark ? 0.2 : 0.07), radius: 3, y: 1)
-                                }
-                            }
-                            .contentShape(RoundedRectangle(cornerRadius: 9))
+    /// The actual segment controls are shared between the interactive scroll
+    /// reader and the static renderer; snapshots never substitute mock buttons.
+    private var segmentItems: some View {
+        HStack(spacing: 3) {
+            ForEach(segments) { segment in
+                let selected = selection == segment.id
+                Button {
+                    activate(segment)
+                } label: {
+                    HStack(spacing: CGFloat(NativeMotionSpacing.small)) {
+                        if let icon = segment.systemImage {
+                            Image(systemName: icon).accessibilityHidden(true)
                         }
-                        .buttonStyle(.plain)
-                        .disabled(!segment.isEnabled)
-                        .focused($focusedID, equals: segment.id)
-                        .accessibilityAddTraits(selected ? .isSelected : [])
-                        .accessibilityValue(selected ? Text("Selected") : Text("Not selected"))
-                        .id(segment.id)
+                        Text(segment.title)
+                            .fixedSize(horizontal: true, vertical: false)
+                    }
+                    .font(.system(.body, design: .default, weight: selected ? .semibold : .regular))
+                    .foregroundStyle(selected ? color(.primaryText) : color(.secondaryText))
+                    .padding(.horizontal, 14)
+                    .frame(minHeight: minimumHeight)
+                    .background {
+                        if selected {
+                            RoundedRectangle(cornerRadius: 9, style: .continuous)
+                                .fill(color(.surface))
+                                .matchedGeometryEffect(id: "selected-segment", in: selectionNamespace)
+                                .shadow(color: .black.opacity(colorScheme == .dark ? 0.2 : 0.07), radius: 3, y: 1)
+                        }
+                    }
+                    .contentShape(RoundedRectangle(cornerRadius: 9))
+                }
+                .buttonStyle(.plain)
+                .disabled(!segment.isEnabled)
+                .focused($focusedID, equals: segment.id)
+                .accessibilityAddTraits(selected ? .isSelected : [])
+                .accessibilityValue(selected ? Text("Selected") : Text("Not selected"))
+                .id(segment.id)
+            }
+        }
+        .padding(4)
+        .animation(NativeMotionAnimations.spring(.morph, reduceMotion: reduceMotion), value: selection)
+    }
+
+    private var roundedBackground: some View {
+        RoundedRectangle(cornerRadius: 13, style: .continuous)
+            .fill(color(.background))
+    }
+
+    private var roundedBorder: some View {
+        RoundedRectangle(cornerRadius: 13, style: .continuous)
+            .strokeBorder(color(.border), lineWidth: 1)
+    }
+
+    @ViewBuilder
+    public var body: some View {
+        if offscreenPreview {
+            // ImageRenderer currently drops ScrollViewReader's content when
+            // rendering without a hosting window. Preserve the exact same
+            // buttons, backgrounds and selection styling in this static path.
+            segmentItems
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(roundedBackground)
+                .overlay(roundedBorder)
+                .accessibilityElement(children: .contain)
+                .accessibilityLabel(Text(label))
+        } else {
+            ScrollViewReader { proxy in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    segmentItems
+                }
+                .background(roundedBackground)
+                .overlay(roundedBorder)
+                .accessibilityElement(children: .contain)
+                .accessibilityLabel(Text(label))
+                .onAppear { proxy.scrollTo(selection, anchor: .center) }
+                .onChange(of: selection) { next in
+                    withAnimation(NativeMotionAnimations.spring(.gentle, reduceMotion: reduceMotion)) {
+                        proxy.scrollTo(next, anchor: .center)
                     }
                 }
-                .padding(4)
-                .animation(NativeMotionAnimations.spring(.morph, reduceMotion: reduceMotion), value: selection)
+                #if os(macOS)
+                .onMoveCommand(perform: moveSelection)
+                #endif
             }
-            .background {
-                RoundedRectangle(cornerRadius: 13, style: .continuous)
-                    .fill(color(.background))
-            }
-            .overlay {
-                RoundedRectangle(cornerRadius: 13, style: .continuous)
-                    .strokeBorder(color(.border), lineWidth: 1)
-            }
-            .accessibilityElement(children: .contain)
-            .accessibilityLabel(Text(label))
-            .onAppear { proxy.scrollTo(selection, anchor: .center) }
-            .onChange(of: selection) { next in
-                withAnimation(NativeMotionAnimations.spring(.gentle, reduceMotion: reduceMotion)) {
-                    proxy.scrollTo(next, anchor: .center)
-                }
-            }
-            #if os(macOS)
-            .onMoveCommand(perform: moveSelection)
-            #endif
         }
     }
 }

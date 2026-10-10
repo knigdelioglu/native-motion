@@ -12,7 +12,9 @@ public struct MotionExpandableCard<Content: View>: View {
     private let content: Content
 
     @Environment(\.colorScheme) private var colorScheme
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
+    @Environment(\.nativeMotionPreviewReduceMotion) private var previewReduceMotion
+    private var reduceMotion: Bool { systemReduceMotion || previewReduceMotion }
     @ScaledMetric(relativeTo: .body) private var inset: CGFloat = 16
 
     public init(

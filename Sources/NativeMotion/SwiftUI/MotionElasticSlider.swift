@@ -17,7 +17,9 @@ public struct MotionElasticSlider: View {
     @State private var edgeDisplacement: CGFloat = 0
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.layoutDirection) private var layoutDirection
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
+    @Environment(\.nativeMotionPreviewReduceMotion) private var previewReduceMotion
+    private var reduceMotion: Bool { systemReduceMotion || previewReduceMotion }
     @Environment(\.isEnabled) private var environmentEnabled
     @ScaledMetric(relativeTo: .body) private var thumbSize: CGFloat = 28
     @ScaledMetric(relativeTo: .body) private var hitHeight: CGFloat = 44
@@ -66,7 +68,8 @@ public struct MotionElasticSlider: View {
             onEditingChanged?(true)
         }
         let rawLTR = Double((point - thumbSize / 2) / Swift.max(trackWidth, 1))
-        let raw = layoutDirection == .rightToLeft ? 1 - rawLTR : rawLTR
+        let raw = MotionSliderGeometry.logicalProgress(fromVisual: rawLTR,
+                                                       rightToLeft: layoutDirection == .rightToLeft)
         let bounded = Swift.max(0, Swift.min(1, raw))
         updateValue(scale.value(atProgress: bounded))
         guard !reduceMotion else {
@@ -98,7 +101,10 @@ public struct MotionElasticSlider: View {
             GeometryReader { geometry in
                 let span = Swift.max(0, geometry.size.width - thumbSize)
                 let fraction = CGFloat(scale.progress(for: value))
-                let visual = layoutDirection == .rightToLeft ? 1 - fraction : fraction
+                let visual = CGFloat(MotionSliderGeometry.visualProgress(
+                    fromLogical: Double(fraction),
+                    rightToLeft: layoutDirection == .rightToLeft
+                ))
                 let filled = span * fraction
                 let left = thumbSize / 2
                 ZStack {
@@ -119,7 +125,10 @@ public struct MotionElasticSlider: View {
 
                     ForEach(marks, id: \.self) { mark in
                         let position = CGFloat(scale.progress(for: mark))
-                        let visualMark = layoutDirection == .rightToLeft ? 1 - position : position
+                        let visualMark = CGFloat(MotionSliderGeometry.visualProgress(
+                            fromLogical: Double(position),
+                            rightToLeft: layoutDirection == .rightToLeft
+                        ))
                         Circle()
                             .fill(color(.secondaryText))
                             .frame(width: 3, height: 3)
@@ -162,6 +171,11 @@ public struct MotionElasticSlider: View {
                         }
                 )
             }
+            // SwiftUI's native RTL geometry mirroring plus our explicit logical
+            // value inversion otherwise mirrors the track twice. Keep the
+            // physical track coordinates left-to-right; the value model
+            // remains RTL-aware and the surrounding labels keep native RTL.
+            .environment(\.layoutDirection, .leftToRight)
             .frame(height: hitHeight)
         }
         .opacity(enabled ? 1 : 0.5)
