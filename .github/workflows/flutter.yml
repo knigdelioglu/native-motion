@@ -1,0 +1,48 @@
+name: Flutter Renderer CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/flutter/**'
+      - 'Tests/NativeMotionTests/Snapshots/**'
+      - '.github/workflows/flutter.yml'
+  pull_request:
+    paths:
+      - 'packages/flutter/**'
+      - 'Tests/NativeMotionTests/Snapshots/**'
+      - '.github/workflows/flutter.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  flutter:
+    name: Flutter package and gallery checks
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Flutter 3.47 stable
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.7'
+          channel: stable
+          cache: true
+      - name: Verify Flutter
+        run: flutter --version
+      - name: Package dependencies
+        working-directory: packages/flutter
+        run: flutter pub get
+      - name: Static analysis
+        working-directory: packages/flutter
+        run: flutter analyze
+      - name: Widget and cross-platform token parity tests
+        working-directory: packages/flutter
+        run: flutter test --reporter expanded
+      - name: Gallery dependencies
+        working-directory: packages/flutter/example
+        run: flutter pub get
+      - name: Analyze independent gallery
+        working-directory: packages/flutter/example
+        run: flutter analyze

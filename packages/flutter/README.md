@@ -1,0 +1,70 @@
+# Native Motion for Flutter — experimental
+
+Original, app-independent Flutter implementation of Native Motion.
+
+## Installation
+
+Until a tagged release, depend on this monorepo path directly:
+
+```yaml
+dependencies:
+  native_motion:
+    git:
+      url: https://github.com/knigdelioglu/native-motion.git
+      path: packages/flutter
+      ref: main
+```
+
+Import with `import 'package:native_motion/native_motion.dart';`.
+
+## Current components
+
+- `MotionButton`: primary/secondary/ghost/destructive; small/medium/large;
+  idle/loading/success/failure; host-owned callback; duplicate taps blocked
+  while loading; native pointer/keyboard focus.
+- `MotionStatusIndicator`: neutral/processing/success/warning/failure;
+  label, optional detail and localizable status text; status is host-controlled.
+- Semantic color, spacing and radius tokens with repository-level parity tests
+  against the Swift package's goldens.
+
+## Accessibility
+
+A reduced-motion preference stops press animations and switches indefinite busy
+feedback to a static status. Flutter exposes animation suppression through
+`MediaQueryData.disableAnimations`; iOS also exposes a separate
+`PlatformDispatcher.accessibilityFeatures.reduceMotion` flag, so both are
+respected. A native platform observer updates controls when accessibility
+preferences change. <i>Automated widget tests are not real-device screen reader tests.</i>
+
+## Catalog
+
+The standalone catalog lives at `example/`. To launch on a new device:
+
+```sh
+cd packages/flutter/example
+flutter pub get
+flutter create --project-name native_motion_gallery --platforms=android,ios,macos .
+flutter run
+```
+
+Platform shell files are generated locally so the repo stays focused on the
+native component implementation. CI analyzes the catalog's Dart source.
+
+## Quality
+
+```sh
+cd packages/flutter
+flutter pub get
+flutter analyze
+flutter test
+```
+
+Parity tests intentionally read the root repo's Swift token fixture files;
+run them from this monorepo rather than a repackaged standalone tarball.
+No third-party state manager, navigation package, or animation engine is used.
+
+## Status
+
+Experimental: package APIs may change before the first stable tag.
+Remaining: segmented control, expandable card, elastic slider, Flutter golden
+tests, and device-level accessibility/performance review.

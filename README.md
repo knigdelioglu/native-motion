@@ -3,9 +3,10 @@
 **Calm by default. Responsive by nature. Native by design.**
 
 Native Motion is an independent, open-source, native-first UI and motion
-design system. Its first renderer uses SwiftUI, not a web view. Future Flutter
-and Jetpack Compose implementations will share interaction semantics rather
-than copy platform-specific spring constants.
+design system. It has independent **SwiftUI and Flutter renderers**; the Flutter package is
+experimental. Jetpack Compose is a future renderer. No WebViews, cross-platform
+UI bridges or ported component source are involved. All renderers share
+semantic design tokens and interaction intent, not identical spring constants.
 
 > Experimental: APIs and visual tokens are not yet stable.
 
@@ -22,6 +23,25 @@ than copy platform-specific spring constants.
 Supporting these are semantic motion presets (`responsive`, `gentle`,
 `morph`, `settle`), light/dark palette tokens, layout dimensions, Reduce
 Motion adaptation and an interactive component catalog.
+
+## Flutter (experimental)
+
+A native Flutter library, tests, and independent gallery are available in
+[packages/flutter](packages/flutter/README.md). It implements `MotionButton`
+and `MotionStatusIndicator` with native Flutter interaction, controlled states,
+reduced-motion handling, and cross-renderer token parity tests.
+
+```yaml
+dependencies:
+  native_motion:
+    git:
+      url: https://github.com/knigdelioglu/native-motion.git
+      path: packages/flutter
+      ref: main
+```
+
+See [Flutter renderer architecture](docs/FLUTTER.md). This is an early release,
+not a feature-complete match to the five SwiftUI components.
 
 ## Swift Package Manager
 
@@ -88,8 +108,9 @@ swift run NativeMotionCatalog
 
 The interactive catalog requires macOS 13+ with SwiftUI. Linux compiles
 platform-neutral logic, including keyboard selection policy, and shows a
-catalog availability message. CI tests macOS and Linux. Manual Apple-device
-visual, keyboard and accessibility checks are still needed.
+catalog availability message. Swift CI tests macOS and Linux; a separate Flutter workflow checks Flutter
+analysis, widget behavior, token parity and the standalone gallery.
+Manual device-level visual, keyboard and accessibility checks remain necessary.
 
 ## Design and contribution
 
