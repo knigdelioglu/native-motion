@@ -67,6 +67,17 @@ The host owns selection, expansion, value state, and asynchronous work. Segments
 **unique, stable string IDs**; a current selection should refer to an enabled
 segment. The control does not silently override external state.
 
+## Quality and visual review
+
+The quality pipeline tests semantic token reference files, slider invariants and
+contrast on macOS/Linux. On macOS it captures four SwiftUI images (light, dark,
+Reduce Motion, large text) and uploads them as Actions artifacts. Captured images
+are not yet approved pixel baselines; a comparison CLI is provided for the
+maintainer approval workflow. The release-mode microbenchmark measures only
+numeric interaction logic, not GPU frames or real-device responsiveness.
+
+Read the [quality gates and screenshot workflow](docs/QUALITY.md).
+
 ## Build, test and preview
 
 ```sh

@@ -14,8 +14,18 @@
 - [x] Passive accessible status indicator with all major operation states
 - [ ] Manual visual and accessibility walkthrough on Apple hardware
 
+## PR 4 · Quality instrumentation
+- [x] Deterministic design-token regression goldens on macOS/Linux
+- [x] Native SwiftUI screenshot capture for light/dark/reduced-motion/large-text
+- [x] Baseline image-comparison mode requiring approved reference screenshots
+- [x] Repeatable non-UI benchmark with CI artifact (no unreliable speed threshold)
+- [x] Expanded scalar/state correctness and contrast tests
+- [ ] Review and approve first pixel-image baselines on a fixed macOS toolchain
+- [ ] Measure real animation/frame performance with Instruments on Apple hardware
+- [ ] Manual VoiceOver and visual quality walkthrough
+
 ## Next
-- Visual regression baselines and performance/interaction checks
+- Approve and enforce native screenshot goldens
 - Flutter renderer after native interaction contracts mature
 - Jetpack Compose renderer calibrated independently
 

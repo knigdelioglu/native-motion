@@ -12,9 +12,7 @@
 
 ## Native macOS screenshot capture
 
-`swift run -c release NativeMotionVisualAudit -- .artifacts/visual`
-
-Correct CLI syntax for Swift Package Manager:
+Capture with Swift Package Manager:
 
 ```sh
 swift run -c release NativeMotionVisualAudit .artifacts/visual
