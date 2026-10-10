@@ -7,3 +7,5 @@ export 'src/theme/motion_palette.dart';
 export 'src/theme/motion_accessibility.dart';
 export 'src/widgets/motion_button.dart';
 export 'src/widgets/motion_status_indicator.dart';
+export 'src/widgets/motion_segmented_control.dart';
+export 'src/widgets/motion_expandable_card.dart';

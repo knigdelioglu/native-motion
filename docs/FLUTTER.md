@@ -6,8 +6,9 @@ Native Motion is a multi-renderer design system. SwiftUI and Flutter do
 ## First stage
 
 `packages/flutter` supplies a Flutter package and host-independent catalog
-built entirely with Flutter SDK widgets. The initial components are
-`MotionButton` and `MotionStatusIndicator`.
+built entirely with Flutter SDK widgets. The first four components are `MotionButton`, `MotionSegmentedControl`,
+`MotionExpandableCard` and `MotionStatusIndicator`.
+`MotionElasticSlider` is the final core-five Flutter parity gap.
 
 The visual palette and layout metrics use the established Swift renderer as
 the reference. Tests compare every semantic color against the checked-in
@@ -44,3 +45,15 @@ consistency. This mapping is provisional until device-level testing.
 - All five SwiftUI components implemented in Flutter with equivalent behavior.
 
 The Flutter package remains marked experimental until those criteria hold.
+
+## v0.2 controlled UI contracts
+
+| Component | Host state | Native interactions | Known difference |
+|---|---|---|---|
+| MotionSegmentedControl | `selection: String`, `onChanged(String)` | Touch/hover, overflow scroll, focus, left/right keyboard navigation with RTL and disabled-skip | Flutter animates individual segment backgrounds; SwiftUI uses matched-geometry highlight |
+| MotionExpandableCard | `expanded: bool`, `onChanged(bool)` | Native header button, nested independent controls, disclosure semantics | Flutter AnimatedSize and rotation replace SwiftUI layout spring |
+| MotionElasticSlider | Planned for next parity PR | Not available in Flutter yet | Do not advertise as implemented |
+
+When callbacks are null, controls are read-only; displayed state remains
+host-owned. Their automatic tests are not a substitute for TalkBack/VoiceOver,
+keyboard-on-device and real frame pacing measurements.
