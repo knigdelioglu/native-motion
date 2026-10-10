@@ -14,6 +14,10 @@ struct NativeMotionCatalogApp: App {
 private struct CatalogView: View {
     @State private var phase: MotionButtonPhase = .idle
     @State private var actionCount = 0
+    @State private var exportCount = 0
+    @State private var deletionCount = 0
+    @State private var chosenExport = "None"
+    @State private var confirmationPhase: MotionButtonPhase = .idle
     @State private var selected = "overview"
     @State private var expanded = true
     @State private var secondExpanded = false
@@ -120,6 +124,55 @@ private struct CatalogView: View {
                     Text("Hover, focus, loading and accessibility-label checks")
                         .font(.caption)
                         .foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionSplitButton").font(.title2.bold())
+                    MotionSplitButton(
+                        "Export",
+                        actions: [
+                            MotionSplitAction("pdf", title: "Export PDF", systemImage: "doc.richtext") {
+                                chosenExport = "PDF"
+                            },
+                            MotionSplitAction("csv", title: "Export CSV", systemImage: "tablecells") {
+                                chosenExport = "CSV"
+                            },
+                            MotionSplitAction("disabled", title: "Unavailable", isEnabled: false) {}
+                        ]
+                    ) {
+                        exportCount += 1
+                        chosenExport = "Default"
+                    }
+                    Text("Primary presses: \(exportCount) · Option: \(chosenExport)")
+                        .font(.footnote).foregroundStyle(.secondary)
+
+                    MotionSplitButton(
+                        "Busy",
+                        phase: .loading,
+                        actions: [MotionSplitAction("copy", title: "Copy") {}],
+                        primaryAction: {}
+                    )
+                    Text("Try separate primary and menu keyboard focus.")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionConfirmButton").font(.title2.bold())
+                    MotionConfirmButton(
+                        "Delete item",
+                        confirmationTitle: "Confirm deletion",
+                        phase: confirmationPhase
+                    ) {
+                        deletionCount += 1
+                        confirmationPhase = .success
+                    }
+                    MotionButton("Reset confirmation demo", variant: .secondary) {
+                        confirmationPhase = .idle
+                    }
+                    Text("Completed confirmations: \(deletionCount)")
+                        .font(.footnote).foregroundStyle(.secondary)
+                    Text("First click arms; second confirms. Cancel or Escape disarms.")
+                        .font(.caption).foregroundStyle(.secondary)
                 }
 
                 VStack(alignment: .leading, spacing: 12) {

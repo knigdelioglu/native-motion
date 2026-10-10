@@ -25,6 +25,8 @@ and mandatory acceptance gates are defined separately in each plan.
 | --- | --- |
 | `MotionButton` | Four variants, three sizes, idle/loading/success/failure |
 | `MotionIconButton` | Native icon-only action with a mandatory accessible label, phases, sizes and disabled support (SwiftUI) |
+| `MotionSplitButton` | Separate primary action and native alternative-action menu, disabled/busy options (SwiftUI) |
+| `MotionConfirmButton` | Two deliberate activations with separate cancel; host-owned completion (SwiftUI) |
 | `MotionSegmentedControl` | Spring-linked selection with disabled items, horizontal scrolling and keyboard navigation |
 | `MotionExpandableCard` | Host-controlled disclosure card with optional subtitle and arbitrary interactive content |
 | `MotionElasticSlider` | Gesture + accessibility-adjustable value input with bounded steps and elastic edges |
