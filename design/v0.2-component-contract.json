@@ -567,13 +567,19 @@
       "id": 19,
       "name": "MotionPopover",
       "states": [
-        "to-be-defined-before-implementation"
+        "closed",
+        "opened",
+        "dismissed",
+        "keyboard",
+        "focus",
+        "adaptiveLayout",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionPopover.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -591,13 +597,19 @@
       "id": 20,
       "name": "MotionTooltip",
       "states": [
-        "to-be-defined-before-implementation"
+        "hover",
+        "focused",
+        "tap",
+        "dismissed",
+        "disabled",
+        "keyboard",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionTooltip.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -615,13 +627,20 @@
       "id": 21,
       "name": "MotionTabs",
       "states": [
-        "to-be-defined-before-implementation"
+        "selected",
+        "unselected",
+        "disabled",
+        "keyboard",
+        "rtl",
+        "scroll",
+        "focus",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionTabs.swift"
         },
         "flutter": {
           "implementation": "planned",

@@ -42,6 +42,10 @@ private struct CatalogView: View {
     @State private var dialogPhase: MotionButtonPhase = .idle
     @State private var dialogConfirmCount = 0
     @State private var dialogCancelCount = 0
+    @State private var popoverPresented = false
+    @State private var popoverClosedCount = 0
+    @State private var tabsSelection = "overview"
+    @State private var tabContentCounter = 0
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var systemDynamicType
 
@@ -364,6 +368,72 @@ private struct CatalogView: View {
                     Text("Confirms: \(dialogConfirmCount) · cancels: \(dialogCancelCount)")
                         .font(.footnote).foregroundStyle(.secondary)
                     Text("Try keyboard focus, Escape, loading and reduced motion.")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionPopover").font(.title2.bold())
+                    MotionPopover(
+                        "Options",
+                        isPresented: $popoverPresented,
+                        onDismiss: { popoverClosedCount += 1 }
+                    ) {
+                        Label("Open popover", systemImage: "rectangle.on.rectangle")
+                    } content: {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Native anchored content can contain independent actions.")
+                            MotionButton("Nested action", variant: .secondary) {
+                                actionCount += 1
+                            }
+                        }
+                    }
+                    Text("Popover dismissed: \(popoverClosedCount) times")
+                        .font(.footnote).foregroundStyle(.secondary)
+                    Text("Try Escape, outside dismissal, keyboard focus and compact windows.")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionTooltip").font(.title2.bold())
+                    MotionTooltip(
+                        "About this setting",
+                        message: "Explanation is accessible on hover, focus or tap."
+                    ) {
+                        Label("Why?", systemImage: "questionmark.circle")
+                    }
+                    MotionTooltip(
+                        "Unavailable hint", message: "The host has disabled this control.",
+                        isEnabled: false
+                    ) {
+                        Image(systemName: "questionmark.circle")
+                    }
+                    Text("Hover on macOS for native help; tap to reveal a native popover.")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionTabs").font(.title2.bold())
+                    MotionTabs(
+                        "Catalog sections",
+                        tabs: [
+                            MotionTabItem("overview", title: "Overview", systemImage: "square.grid.2x2"),
+                            MotionTabItem("activity", title: "Activity", systemImage: "chart.bar"),
+                            MotionTabItem("disabled", title: "Unavailable", isEnabled: false),
+                            MotionTabItem("details", title: "Details", systemImage: "doc.text")
+                        ],
+                        selection: $tabsSelection
+                    ) { tabID in
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Visible tab: \(tabID)")
+                            Text("Host count: \(tabContentCounter)")
+                                .font(.footnote).foregroundStyle(.secondary)
+                            MotionButton("Increment host state", variant: .secondary) {
+                                tabContentCounter += 1
+                            }
+                        }
+                        .padding(12)
+                    }
+                    Text("Keyboard arrows skip disabled tabs. Host state persists across tabs.")
                         .font(.caption).foregroundStyle(.secondary)
                 }
 
