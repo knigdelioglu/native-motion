@@ -687,13 +687,19 @@
       "id": 23,
       "name": "MotionToast",
       "states": [
-        "to-be-defined-before-implementation"
+        "neutral",
+        "success",
+        "warning",
+        "failure",
+        "dismiss",
+        "externallyPresented",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionToast.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -739,13 +745,20 @@
       "id": 25,
       "name": "MotionStepper",
       "states": [
-        "to-be-defined-before-implementation"
+        "current",
+        "completed",
+        "pending",
+        "disabled",
+        "keyboard",
+        "rtl",
+        "futureNavigation",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionStepper.swift"
         },
         "flutter": {
           "implementation": "planned",

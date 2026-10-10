@@ -46,6 +46,8 @@ and mandatory acceptance gates are defined separately in each plan.
 | `MotionTabs` | Scrollable native tab bar, disabled options and RTL keyboard navigation (SwiftUI) |
 | `MotionProgress` | Native determinate/indeterminate progress with explicit host-supplied fraction (SwiftUI) |
 | `MotionSkeleton` | Accessible loading placeholder with optional pulse, reduced motion and layout bounds (SwiftUI) |
+| `MotionToast` | Host-presented notification and accessible dismissal, without timers (SwiftUI) |
+| `MotionStepper` | Explicit host-owned completed/current workflow steps; bounded navigation (SwiftUI) |
 
 Supporting these are semantic motion presets (`responsive`, `gentle`,
 `morph`, `settle`), light/dark palette tokens, layout dimensions, Reduce

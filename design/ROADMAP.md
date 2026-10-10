@@ -58,7 +58,9 @@ tracked separately. Do not label experimental platform adapters as stable.
 - [x] SwiftUI select, native menu and host-controlled modal dialog
 - [x] SwiftUI popover, tooltip and RTL-aware scrollable tabs
 - [x] SwiftUI native progress and reduced-motion skeleton placeholders
-- [ ] Remaining v0.2 interaction components
+- [x] SwiftUI toast and host-controlled multi-stage workflow stepper
+- [x] SwiftUI v0.2 conceptual source coverage: 25/25
+- [ ] Flutter v0.2 first-ten coverage (currently 5/10)
 - [ ] Device-level accessibility, screenshot approval, and performance review
 
 [Detailed v0.2 implementation tracker](../plan/0.2-progress.md)
