@@ -77,7 +77,7 @@ public struct MotionProgress: View {
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(color(.primaryText))
                 Spacer(minLength: 0)
-                Text(valueDescription)
+                valueDescription
                     .font(.caption.weight(.medium))
                     .foregroundStyle(color(.secondaryText))
             }
