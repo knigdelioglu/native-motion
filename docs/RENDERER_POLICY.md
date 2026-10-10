@@ -26,3 +26,14 @@ when explicitly documented. No WebView or copied Arc code. Ensure SDK
 compatibility matrix, sample Expo app, typecheck, tests, Android/iOS
 TalkBack/VoiceOver, RTL, large text, Reduce Motion, performance and approved
 visual reference gates before stable tagging.
+
+### v0.5 practical enforcement
+
+`design/v0.5-component-contract.json` is additive: 25 v0.2 conceptual
+items plus 30 new v0.5 items. The `v05-contract` workflow validates the
+plan numbering, unique IDs and real source files in all renderer paths.
+Each 0.5 new component requires **SwiftUI + Flutter + React Native/Expo**
+source/test coverage in the same behavior-family PR, or an explicit
+`planned` exception that must be resolved before stable release.
+Compose is separately beta-scoped. React Native is not waived by default.
+A typechecked sample Expo screen is required in addition to API exports.

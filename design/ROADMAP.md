@@ -74,3 +74,14 @@ tracked separately. Do not label experimental platform adapters as stable.
 - Jetpack Compose renderer calibrated independently
 
 Prioritize native interaction quality over the number of components.
+
+## v0.5 execution — first cross-renderer wave
+
+- [x] 26 `MotionAccordion`: SwiftUI + Flutter + React Native/Expo implementations and policy/widget tests
+- [x] 27 `MotionDisclosureGroup`: native nesting, disabled behavior, platform example galleries
+- [x] Machine-verifiable 26–55 manifest with mandatory React Native evidence for every new component
+- [ ] 28–55 implementation and six reusable screen blocks
+- [ ] Backfill Flutter v0.2 missing five and complete native device/accessibility testing
+- [ ] v0.2 prerequisite release, approved screenshot goldens and v0.5 release gates
+
+[Detailed v0.5 implementation tracker](../plan/0.5-progress.md).

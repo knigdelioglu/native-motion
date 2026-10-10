@@ -35,6 +35,16 @@ Import with `import 'package:native_motion/native_motion.dart';`.
 - Semantic color, spacing and radius tokens with repository-level parity tests
   against the Swift package's goldens.
 
+## v0.5 incremental components
+
+- `MotionAccordion`: host-supplied open ID set, single/multiple mode,
+  disabled entries and nested independent actions.
+- `MotionDisclosureGroup`: externally controlled native disclosure
+  with localized semantic label and reduced-motion collapse/expand.
+
+These are v0.5 **development components**, not an independently released or
+device-certified API; see [v0.5 progress](../../plan/0.5-progress.md).
+
 ## Accessibility
 
 A reduced-motion preference stops press animations and switches indefinite busy

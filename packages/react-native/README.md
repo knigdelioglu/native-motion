@@ -38,6 +38,19 @@ export default function Example() {
 }
 ```
 
+### v0.5 incremental preview (experimental)
+
+`MotionAccordion` and `MotionDisclosureGroup` have independent native
+React Native source, TypeScript API validation and an integrated
+[Expo sample](example/App.tsx). The host supplies `expandedIds` and
+`onChange` for single/multi sections; a nested disclosure uses
+`expanded` and `onChange` Boolean values. These are additional to
+the v0.2 25 conceptual components and remain unverified on real
+Android/iOS devices.
+
+The v0.5 contract enforces React Native support in every new behavior-family
+PR; see [v0.5 progress](../../plan/0.5-progress.md).
+
 ### v0.2 inventory and guarantees
 
 All 25 conceptual names are **source-implemented** in
