@@ -37,7 +37,7 @@ for item in items:
         assert isinstance(path,str) and (ROOT/path).is_file(), (platform,item["name"],path)
         counts[platform] += 1
         if platform == "react_native":
-            assert re.search(r"export\\s+(?:function|const)\\s+"+item["name"]+r"\\b",(ROOT/path).read_text())
+            assert re.search(r"export\s+(?:function|const)\s+"+item["name"]+r"\b",(ROOT/path).read_text())
             assert "export { "+item["name"]+" }" in rn_exports
         if platform == "flutter":
             assert "export '"+str(Path(path).relative_to("packages/flutter/lib"))+"';" in flutter_exports
