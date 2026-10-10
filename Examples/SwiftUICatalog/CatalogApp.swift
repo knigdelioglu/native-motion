@@ -65,6 +65,9 @@ private struct CatalogView: View {
     @State private var surfaceDetent: MotionBottomDetent = .medium
     @State private var commandMenuOpen = false
     @State private var commandMenuQuery = ""
+    @State private var v05Page = 42
+    @State private var v05Section = "general"
+    @State private var v05Breadcrumb = "details"
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var systemDynamicType
 
@@ -622,6 +625,33 @@ private struct CatalogView: View {
                     ) {
                         Text("Open searchable command menu")
                     }
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("v0.5 · Breadcrumb, Pagination, SideNavigation")
+                        .font(.title2.bold())
+                    MotionBreadcrumb(
+                        "Document hierarchy",
+                        items: [
+                            MotionBreadcrumbItem("home", title: "Home"),
+                            MotionBreadcrumbItem("library", title: "Library"),
+                            MotionBreadcrumbItem("details", title: "Details")
+                        ],
+                        currentID: v05Breadcrumb
+                    ) { id in v05Breadcrumb = id }
+                    MotionPagination(
+                        "Results", page: $v05Page, totalPages: 1000
+                    )
+                    Text("Page \\(v05Page)")
+                    MotionSideNavigation(
+                        "Settings",
+                        items: [
+                            MotionSideNavigationItem("general", title: "General"),
+                            MotionSideNavigationItem("account", title: "Account"),
+                            MotionSideNavigationItem("disabled", title: "Unavailable", isEnabled: false)
+                        ],
+                        selection: $v05Section
+                    )
                 }
 
                 VStack(alignment: .leading, spacing: 12) {

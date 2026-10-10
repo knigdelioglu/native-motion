@@ -200,9 +200,9 @@
       "name": "MotionBreadcrumb",
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionBreadcrumb.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -210,9 +210,9 @@
           "source": null
         },
         "react_native": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionBreadcrumb.tsx"
         },
         "compose": {
           "implementation": "planned",
@@ -226,9 +226,9 @@
       "name": "MotionPagination",
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionPagination.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -236,9 +236,9 @@
           "source": null
         },
         "react_native": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionPagination.tsx"
         },
         "compose": {
           "implementation": "planned",
@@ -252,9 +252,9 @@
       "name": "MotionSideNavigation",
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionSideNavigation.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -262,9 +262,9 @@
           "source": null
         },
         "react_native": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionSideNavigation.tsx"
         },
         "compose": {
           "implementation": "planned",
