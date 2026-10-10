@@ -46,6 +46,9 @@ private struct CatalogView: View {
     @State private var popoverClosedCount = 0
     @State private var tabsSelection = "overview"
     @State private var tabContentCounter = 0
+    @State private var passiveProgress = 0.35
+    @State private var skeletonRows = 3
+    @State private var skeletonAvatar = true
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var systemDynamicType
 
@@ -434,6 +437,29 @@ private struct CatalogView: View {
                         .padding(12)
                     }
                     Text("Keyboard arrows skip disabled tabs. Host state persists across tabs.")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionProgress").font(.title2.bold())
+                    MotionProgress(
+                        "Download",
+                        fraction: passiveProgress,
+                        detail: "Host-owned percentage, not a completion signal"
+                    )
+                    Slider(value: $passiveProgress, in: 0...1) { Text("Host progress") }
+                    MotionProgress("Background loading", fraction: nil)
+                    MotionProgress("Nonfinite is indeterminate", fraction: .nan)
+                    Text("100% is not a claimed success state.")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionSkeleton").font(.title2.bold())
+                    MotionSkeleton("Loading profile", rows: skeletonRows, showsAvatar: skeletonAvatar)
+                    Stepper("Placeholder rows: \(skeletonRows)", value: $skeletonRows, in: 1...8)
+                    Toggle("Show placeholder avatar", isOn: $skeletonAvatar)
+                    Text("Check Reduce Motion and Dynamic Type in the inspection controls.")
                         .font(.caption).foregroundStyle(.secondary)
                 }
 
