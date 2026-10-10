@@ -50,6 +50,7 @@ tracked separately. Do not label experimental platform adapters as stable.
 - [x] Begin machine-verifiable component/renderer coverage contract
 - [x] Flutter segmented selection and expandable disclosure implementations
 - [x] Flutter elastic slider source, range model and widget tests
+- [x] SwiftUI MotionIconButton source and policy tests
 - [ ] Remaining v0.2 interaction components
 - [ ] Device-level accessibility, screenshot approval, and performance review
 

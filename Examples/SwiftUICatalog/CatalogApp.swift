@@ -94,6 +94,35 @@ private struct CatalogView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionIconButton").font(.title2.bold())
+                    HStack(spacing: 12) {
+                        ForEach(MotionButtonVariant.allCases, id: \.self) { variant in
+                            MotionIconButton(
+                                systemName: "square.and.arrow.up",
+                                label: "Share",
+                                variant: variant
+                            ) { actionCount += 1 }
+                        }
+                    }
+                    HStack(spacing: 12) {
+                        MotionIconButton(
+                            systemName: "arrow.clockwise",
+                            label: "Refresh",
+                            phase: phase
+                        ) { actionCount += 1 }
+                        MotionIconButton(
+                            systemName: "trash",
+                            label: "Unavailable",
+                            variant: .destructive
+                        ) { actionCount += 1 }
+                            .disabled(true)
+                    }
+                    Text("Hover, focus, loading and accessibility-label checks")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
                     Text("MotionSegmentedControl").font(.title2.bold())
                     MotionSegmentedControl(
                         "Catalog section",

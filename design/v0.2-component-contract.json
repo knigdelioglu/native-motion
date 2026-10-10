@@ -176,13 +176,20 @@
       "id": 6,
       "name": "MotionIconButton",
       "states": [
-        "to-be-defined-before-implementation"
+        "idle",
+        "pressed",
+        "loading",
+        "success",
+        "failure",
+        "disabled",
+        "focus",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionIconButton.swift"
         },
         "flutter": {
           "implementation": "planned",

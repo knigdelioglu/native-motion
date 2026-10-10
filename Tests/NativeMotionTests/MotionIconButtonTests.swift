@@ -22,6 +22,7 @@ final class MotionIconButtonTests: XCTestCase {
         }
     }
 
+    @MainActor
     func testPublicSwiftUIViewCanBeConstructedForEveryVariant() {
         for variant in MotionButtonVariant.allCases {
             let button = MotionIconButton(
