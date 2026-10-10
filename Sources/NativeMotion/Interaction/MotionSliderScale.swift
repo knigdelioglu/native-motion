@@ -43,6 +43,12 @@ public struct MotionSliderScale: Equatable, Sendable {
     public func adjacentValue(from value: Double, direction: Int) -> Double {
         guard direction == -1 || direction == 1 else { return snapped(value) }
         let current = snapped(value)
+        if direction == -1 && current == maximum {
+            // The final step may be shorter; decrement back to the prior
+            // regular detent rather than landing between two detents.
+            let finalRegular = clamped(minimum + ((maximum - minimum) / step).rounded(.down) * step)
+            if finalRegular < maximum { return finalRegular }
+        }
         return snapped(current + (Double(direction) * step))
     }
 }

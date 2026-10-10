@@ -16,6 +16,8 @@ than copy platform-specific spring constants.
 | `MotionButton` | Four variants, three sizes, idle/loading/success/failure |
 | `MotionSegmentedControl` | Spring-linked selection with disabled items, horizontal scrolling and keyboard navigation |
 | `MotionExpandableCard` | Host-controlled disclosure card with optional subtitle and arbitrary interactive content |
+| `MotionElasticSlider` | Gesture + accessibility-adjustable value input with bounded steps and elastic edges |
+| `MotionStatusIndicator` | Passive, accessible feedback with neutral/working/success/warning/failure |
 
 Supporting these are semantic motion presets (`responsive`, `gentle`,
 `morph`, `settle`), light/dark palette tokens, layout dimensions, Reduce
@@ -37,6 +39,7 @@ import NativeMotion
 struct Example: View {
     @State private var selected = "all"
     @State private var detailsOpen = false
+    @State private var value = 50.0
 
     var body: some View {
         VStack(spacing: 16) {
@@ -45,6 +48,11 @@ struct Example: View {
                 MotionSegment("active", title: "Active"),
                 MotionSegment("archived", title: "Archived", isEnabled: false)
             ], selection: $selected)
+
+            MotionElasticSlider("Volume", value: $value,
+                                scale: .init(minimum: 0, maximum: 100, step: 5))
+
+            MotionStatusIndicator("Save", status: .processing)
 
             MotionExpandableCard("Details", isExpanded: $detailsOpen) {
                 Text("Independent disclosure content")
@@ -55,7 +63,7 @@ struct Example: View {
 }
 ```
 
-The host owns selection, expansion, and asynchronous work. Segments require
+The host owns selection, expansion, value state, and asynchronous work. Segments require
 **unique, stable string IDs**; a current selection should refer to an enabled
 segment. The control does not silently override external state.
 

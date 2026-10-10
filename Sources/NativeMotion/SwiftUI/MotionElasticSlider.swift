@@ -165,6 +165,7 @@ public struct MotionElasticSlider: View {
             .frame(height: hitHeight)
         }
         .opacity(enabled ? 1 : 0.5)
+        .disabled(!isEnabled)
         .focusable(enabled)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(Text(label))

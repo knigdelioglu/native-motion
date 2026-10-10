@@ -17,6 +17,10 @@ private struct CatalogView: View {
     @State private var selected = "overview"
     @State private var expanded = true
     @State private var secondExpanded = false
+    @State private var sliderValue = 45.0
+    @State private var sliderEditing = false
+    @State private var sliderCommits = 0
+    @State private var currentStatus: MotionStatus = .neutral
     @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
@@ -97,6 +101,40 @@ private struct CatalogView: View {
                     MotionExpandableCard("Another disclosure", isExpanded: $secondExpanded) {
                         Text("Multiple cards may expand independently.")
                     }
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionElasticSlider").font(.title2.bold())
+                    MotionElasticSlider(
+                        "Output level",
+                        value: $sliderValue,
+                        scale: MotionSliderScale(minimum: 0, maximum: 100, step: 5),
+                        marks: [0, 25, 50, 75, 100],
+                        onEditingChanged: { sliderEditing = $0 },
+                        onCommit: { _ in sliderCommits += 1 }
+                    )
+                    Text("Drag: \(sliderEditing ? "active" : "idle") · commits: \(sliderCommits)")
+                        .font(.footnote).foregroundStyle(.secondary)
+                    MotionElasticSlider(
+                        "Disabled adjustment",
+                        value: .constant(20),
+                        isEnabled: false
+                    )
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionStatusIndicator").font(.title2.bold())
+                    Picker("Status", selection: $currentStatus) {
+                        ForEach(MotionStatus.allCases, id: \.self) { status in
+                            Text(status.rawValue.capitalized).tag(status)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    MotionStatusIndicator(
+                        "Sample operation",
+                        status: currentStatus,
+                        detail: "Controlled entirely by the host"
+                    )
                 }
 
                 Text("Review light/dark appearance, Dynamic Type, VoiceOver, keyboard navigation and Reduce Motion.")
