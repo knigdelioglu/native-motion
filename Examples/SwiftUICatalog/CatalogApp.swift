@@ -447,7 +447,7 @@ private struct CatalogView: View {
                         fraction: passiveProgress,
                         detail: "Host-owned percentage, not a completion signal"
                     )
-                    Slider("Host progress", value: $passiveProgress, in: 0...1)
+                    Slider(value: $passiveProgress, in: 0...1) { Text("Host progress") }
                     MotionProgress("Background loading", fraction: nil)
                     MotionProgress("Nonfinite is indeterminate", fraction: .nan)
                     Text("100% is not a claimed success state.")
