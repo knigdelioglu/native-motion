@@ -77,8 +77,16 @@ npm run typecheck
 npm run test:policies
 ```
 
+Run the independent Expo sample (covers all 25 controls):
+
+```sh
+cd packages/react-native/example
+npm install
+npx expo start
+```
+
 The CI additionally confirms exactly **25 public exports and 25 concrete
-files**, checks tokens against the Swift reference fixtures, and checks
+files**, typechecks the Expo sample, checks tokens against the Swift reference fixtures, and checks
 the single-source component contract. A passing typecheck is **not** a
 substitute for Expo on-device behavior or screenshot golden reviews.
 

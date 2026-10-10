@@ -1,5 +1,5 @@
 import React,{type ReactNode} from 'react';
-import {Modal,View,Pressable,Text} from 'react-native';
+import {Modal,View,Text} from 'react-native';
 import {MotionAction,MotionPanel} from './primitives';
 import {useMotionPalette} from './theme';
 /// React Native core has no cross-platform anchored popover API. This uses a

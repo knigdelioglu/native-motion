@@ -39,3 +39,9 @@ jobs:
         run: npm run test:policies
       - name: Inventory and palette parity
         run: python3 tools/check_react_native_renderer.py
+      - name: Install independent Expo catalog
+        working-directory: packages/react-native/example
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Typecheck Expo catalog (all 25 components)
+        working-directory: packages/react-native/example
+        run: npm run typecheck

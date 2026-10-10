@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View,Text,PanResponder} from 'react-native';
+import {View,Text} from 'react-native';
 import {MotionPanel} from './primitives';
 import {range} from './policies';
 import {useMotionPalette} from './theme';
