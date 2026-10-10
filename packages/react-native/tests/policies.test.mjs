@@ -51,3 +51,29 @@ test('v0.5 disabled and missing entries cannot mutate host state',()=>{
  assert.equal(uniqueDisclosureIds(['a','b']),true);
  assert.equal(uniqueDisclosureIds(['a','a']),false);
 });
+
+import {
+  canOpenSurface, canDismissSurface, shouldDismissDrag,
+  nextSheetDetent, heightFraction,
+} from '../src/surfacePolicies.ts';
+
+test('v0.5 overlay visibility is host controlled and busy-safe', () => {
+ assert.equal(canOpenSurface(true,false),true);
+ assert.equal(canOpenSurface(true,true),false);
+ assert.equal(canOpenSurface(false,false),false);
+ assert.equal(canDismissSurface(true,true),false);
+ assert.equal(canDismissSurface(true,false),true);
+ assert.equal(canDismissSurface(false,false),false);
+});
+test('v0.5 bottom detent and drag steps never auto-complete work', () => {
+ assert.equal(shouldDismissDrag(120,false),true);
+ assert.equal(shouldDismissDrag(90,false),false);
+ assert.equal(shouldDismissDrag(200,true),false);
+ assert.equal(nextSheetDetent('expanded',true),'medium');
+ assert.equal(nextSheetDetent('medium',true),'compact');
+ assert.equal(nextSheetDetent('compact',true),null);
+ assert.equal(nextSheetDetent('compact',false),'medium');
+ assert.equal(nextSheetDetent('expanded',false),'expanded');
+ assert.ok(heightFraction('compact')<heightFraction('medium'));
+ assert.ok(heightFraction('medium')<heightFraction('expanded'));
+});

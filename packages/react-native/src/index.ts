@@ -39,3 +39,8 @@ export { MotionDisclosureGroup } from './MotionDisclosureGroup';
 export { MotionAccordion } from './MotionAccordion';
 export { toggleDisclosure, uniqueDisclosureIds } from './disclosurePolicies';
 export type { MotionAccordionItem } from './MotionAccordion';
+export { MotionDrawer } from './MotionDrawer';
+export { MotionSheet } from './MotionSheet';
+export { MotionBottomSheet } from './MotionBottomSheet';
+export { canOpenSurface, canDismissSurface, shouldDismissDrag, nextSheetDetent, heightFraction } from './surfacePolicies';
+export type { MotionSheetDetent } from './surfacePolicies';
