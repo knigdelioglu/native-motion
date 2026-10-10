@@ -32,23 +32,23 @@ jobs:
         run: swift build -c release
       - name: Capture native SwiftUI visual audit
         if: runner.os == 'macOS'
-        run: swift run -c release NativeMotionVisualAudit .artifacts/visual
+        run: swift run -c release NativeMotionVisualAudit artifacts/visual
       - name: Measure value-model performance (diagnostic, no speed threshold)
         run: |
           mkdir -p .artifacts
-          swift run -c release NativeMotionBenchmark --iterations 100000 > .artifacts/benchmark.json
-          cat .artifacts/benchmark.json
+          swift run -c release NativeMotionBenchmark --iterations 100000 > artifacts/benchmark.json
+          cat artifacts/benchmark.json
       - name: Upload macOS visual audit and benchmark
         if: runner.os == 'macOS' && always()
         uses: actions/upload-artifact@v4
         with:
           name: native-motion-macos-quality
-          path: .artifacts/
+          path: artifacts/
           if-no-files-found: warn
       - name: Upload Linux benchmark
         if: runner.os == 'Linux' && always()
         uses: actions/upload-artifact@v4
         with:
           name: native-motion-linux-benchmark
-          path: .artifacts/benchmark.json
+          path: artifacts/benchmark.json
           if-no-files-found: warn

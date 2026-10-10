@@ -15,7 +15,7 @@
 Capture with Swift Package Manager:
 
 ```sh
-swift run -c release NativeMotionVisualAudit .artifacts/visual
+swift run -c release NativeMotionVisualAudit artifacts/visual
 ```
 
 The macOS tool captures four rendered SwiftUI states at 2× scale:
@@ -36,7 +36,7 @@ only after a maintainer approves reference images for a stable macOS runner.
 3. Compare a new capture against exactly those references:
 
 ```sh
-swift run -c release NativeMotionVisualAudit .artifacts/visual \
+swift run -c release NativeMotionVisualAudit artifacts/visual \
   --baseline tests/approved-macos15
 ```
 
