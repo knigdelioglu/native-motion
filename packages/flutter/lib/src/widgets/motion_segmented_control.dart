@@ -55,6 +55,7 @@ class MotionSegmentedControl extends StatefulWidget {
 class _MotionSegmentedControlState extends State<MotionSegmentedControl>
     with WidgetsBindingObserver {
   final ScrollController _scrollController = ScrollController();
+  final FocusNode _keyboardFocusNode = FocusNode(skipTraversal: true);
 
   @override
   void initState() {
@@ -71,7 +72,16 @@ class _MotionSegmentedControlState extends State<MotionSegmentedControl>
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     _scrollController.dispose();
+    _keyboardFocusNode.dispose();
     super.dispose();
+  }
+
+  void _activate(MotionSegment segment) {
+    // Pointer/touch activation should also make subsequent physical arrow
+    // keys operate on this control. Keyboard events from focused descendants
+    // continue to bubble to the parent Focus.
+    _keyboardFocusNode.requestFocus();
+    _select(segment);
   }
 
   void _select(MotionSegment segment) {
@@ -128,7 +138,7 @@ class _MotionSegmentedControlState extends State<MotionSegmentedControl>
       explicitChildNodes: true,
       label: widget.label,
       child: Focus(
-        skipTraversal: true,
+        focusNode: _keyboardFocusNode,
         onKeyEvent: _handleKey,
         child: DecoratedBox(
           decoration: BoxDecoration(
@@ -178,12 +188,12 @@ class _MotionSegmentedControlState extends State<MotionSegmentedControl>
       selected: selected,
       enabled: enabled,
       label: segment.label,
-      onTap: enabled ? () => _select(segment) : null,
+      onTap: enabled ? () => _activate(segment) : null,
       child: ExcludeSemantics(
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: enabled ? () => _select(segment) : null,
+            onTap: enabled ? () => _activate(segment) : null,
             borderRadius: BorderRadius.circular(9),
             child: AnimatedContainer(
               duration: duration,
