@@ -44,3 +44,7 @@ export { MotionSheet } from './MotionSheet';
 export { MotionBottomSheet } from './MotionBottomSheet';
 export { canOpenSurface, canDismissSurface, shouldDismissDrag, nextSheetDetent, heightFraction } from './surfacePolicies';
 export type { MotionSheetDetent } from './surfacePolicies';
+export { MotionContextMenu } from './MotionContextMenu';
+export { MotionCommandMenu } from './MotionCommandMenu';
+export { visibleCommands, canExecuteCommand } from './commandPolicies';
+export type { MotionCommandItem } from './MotionCommandMenu';

@@ -148,9 +148,9 @@
       "name": "MotionContextMenu",
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionContextMenu.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -158,9 +158,9 @@
           "source": null
         },
         "react_native": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionContextMenu.tsx"
         },
         "compose": {
           "implementation": "planned",
@@ -174,9 +174,9 @@
       "name": "MotionCommandMenu",
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionCommandMenu.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -184,9 +184,9 @@
           "source": null
         },
         "react_native": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionCommandMenu.tsx"
         },
         "compose": {
           "implementation": "planned",

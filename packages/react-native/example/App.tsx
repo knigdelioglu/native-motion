@@ -7,6 +7,7 @@ import {
  MotionSearchField,MotionNumberField,MotionSelect,MotionMenu,MotionDialog,
  MotionPopover,MotionTooltip,MotionTabs,MotionProgress,MotionToast,MotionSkeleton,MotionStepper,
  MotionAccordion,MotionDisclosureGroup,MotionDrawer,MotionSheet,MotionBottomSheet,
+ MotionContextMenu,MotionCommandMenu,
  type CheckboxState, type MotionToastKind,
 } from '@native-motion/react-native';
 
@@ -41,6 +42,8 @@ export default function App() {
  const [bottomOpen,setBottomOpen]=useState(false);
  const [bottomDetent,setBottomDetent]=useState<'compact'|'medium'|'expanded'>('medium');
  const [overlayBusy,setOverlayBusy]=useState(false);
+ const [commandOpen,setCommandOpen]=useState(false);
+ const [commandQuery,setCommandQuery]=useState('');
  const section=(heading:string,children:React.ReactNode)=>
   <View style={{gap:12,paddingVertical:16,borderBottomWidth:1,borderColor:'#BBC5D4'}}>
     <Text accessibilityRole="header" style={{fontSize:19,fontWeight:'700'}}>{heading}</Text>{children}
@@ -99,6 +102,15 @@ export default function App() {
      <MotionButton label="Open bottom sheet" onPress={()=>setBottomOpen(true)}/>
      <Text>Bottom detent: {bottomDetent}. Drag the handle or use screen-reader adjustment.</Text>
    </>)}
+   {section('v0.5 · Context / command menu (31–32)',<>
+     <MotionContextMenu label="Document" actions={[
+       {id:'share',label:'Share',onPress:()=>setMenuResult('Shared')},
+       {id:'blocked',label:'Unavailable',disabled:true,onPress:()=>{}}
+     ]}>
+       <Text>Long-press this document or use More actions.</Text>
+     </MotionContextMenu>
+     <MotionButton label="Find a command" onPress={()=>setCommandOpen(true)}/>
+   </>)}
    {section('Native overlays (17–20)',<>
      <MotionMenu label="More actions" actions={[{id:'share',label:'Share',onPress:()=>setMenuResult('Share')}]}/>
      <MotionButton label="Open dialog" onPress={()=>setDialogOpen(true)}/>
@@ -119,6 +131,12 @@ export default function App() {
      <MotionToggle label="Allow future step" value={future} onChange={setFuture}/>
      <MotionButton label="Mark step completed" onPress={()=>setCompleted(prev=>new Set([...prev,current]))}/>
    </>)}
+   <MotionCommandMenu label="Commands" commands={[
+     {id:'save',title:'Save Draft',keywords:['write'],onPress:()=>setMenuResult('Save')},
+     {id:'share',title:'Share Document',onPress:()=>setMenuResult('Share')},
+     {id:'blocked',title:'Unavailable',disabled:true,onPress:()=>{}}
+   ]} visible={commandOpen} query={commandQuery} onQueryChange={setCommandQuery}
+     onDismiss={()=>setCommandOpen(false)}/>
    <MotionDrawer label="Navigation" visible={drawerOpen}
      onDismiss={()=>setDrawerOpen(false)} busy={overlayBusy}>
      <MotionButton label="Home" onPress={()=>setMenuResult('Home')}/>
