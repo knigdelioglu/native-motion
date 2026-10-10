@@ -17,7 +17,7 @@ CATALOG = ROOT / "design" / "v0.2-component-contract.json"
 PLAN = ROOT / "plan" / "0.2.md"
 REQUIRED_INTENTS = ["responsive", "gentle", "morph", "settle"]
 VALID_STATUSES = {"available", "planned"}
-RENDERERS = {"swiftui", "flutter", "compose"}
+RENDERERS = {"swiftui", "flutter", "react_native", "compose"}
 
 
 def ensure(condition: bool, detail: str) -> None:

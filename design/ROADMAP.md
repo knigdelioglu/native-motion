@@ -61,6 +61,8 @@ tracked separately. Do not label experimental platform adapters as stable.
 - [x] SwiftUI toast and host-controlled multi-stage workflow stepper
 - [x] SwiftUI v0.2 conceptual source coverage: 25/25
 - [ ] Flutter v0.2 first-ten coverage (currently 5/10)
+- [x] React Native + Expo renderer: 25/25 TypeScript sources, exports, policy contract and palette validation
+- [ ] React Native Android/iOS device-level accessibility, RTL/keyboard and approved golden checks
 - [ ] Device-level accessibility, screenshot approval, and performance review
 
 [Detailed v0.2 implementation tracker](../plan/0.2-progress.md)
@@ -68,6 +70,7 @@ tracked separately. Do not label experimental platform adapters as stable.
 ## Next
 - Approve and enforce macOS screenshot goldens after a real visual review
 - Flutter component expansion and screen-reader coverage
+- React Native + Expo parity hardening, sample app and on-device TalkBack/VoiceOver review
 - Jetpack Compose renderer calibrated independently
 
 Prioritize native interaction quality over the number of components.

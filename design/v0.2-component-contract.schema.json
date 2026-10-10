@@ -136,7 +136,8 @@
           "required": [
             "swiftui",
             "flutter",
-            "compose"
+            "compose",
+            "react_native"
           ],
           "properties": {
             "swiftui": {
@@ -146,6 +147,9 @@
               "$ref": "#/$defs/renderer"
             },
             "compose": {
+              "$ref": "#/$defs/renderer"
+            },
+            "react_native": {
               "$ref": "#/$defs/renderer"
             }
           }
