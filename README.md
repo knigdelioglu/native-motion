@@ -10,6 +10,15 @@ semantic design tokens and interaction intent, not identical spring constants.
 
 > Experimental: APIs and visual tokens are not yet stable.
 
+## Versioned development plans
+
+- [v0.2 — 25 foundational components](plan/0.2.md)
+- [v0.5 — 55 components and 6 reusable blocks](plan/0.5.md)
+- [v1.0 — 105 components and 22 reusable blocks](plan/1.0.md)
+
+These are cumulative **targets**, not completed releases. Per-platform coverage
+and mandatory acceptance gates are defined separately in each plan.
+
 ## Components
 
 | Component | Description |
