@@ -13,11 +13,22 @@ semantic design tokens and interaction intent, not identical spring constants.
 ## Versioned development plans
 
 - [v0.2 — 25 foundational components](plan/0.2.md)
-- [v0.5 — 55 components and 6 reusable blocks](plan/0.5.md)
+- [v0.5 — 55 components and 6 reusable blocks](plan/0.5.md) ([current implementation](plan/0.5-progress.md))
 - [v1.0 — 105 components and 22 reusable blocks](plan/1.0.md)
 
 These are cumulative **targets**, not completed releases. Per-platform coverage
 and mandatory acceptance gates are defined separately in each plan.
+
+## v0.5 development underway
+
+The first two advanced controls, **MotionAccordion** and **MotionDisclosureGroup**,
+are implemented in three separate native renderers: SwiftUI, Flutter and
+React Native + Expo. They support host-owned single/multiple expansion,
+disabled sections and nested controls. No device-verified release is claimed.
+The new 30-item cross-platform manifest and enforcement are in
+[design/v0.5-component-contract.json](design/v0.5-component-contract.json).
+The v0.2 release prerequisite and remaining Flutter/device QA gates are still
+open.
 
 ## Components
 
@@ -48,6 +59,8 @@ and mandatory acceptance gates are defined separately in each plan.
 | `MotionSkeleton` | Accessible loading placeholder with optional pulse, reduced motion and layout bounds (SwiftUI) |
 | `MotionToast` | Host-presented notification and accessible dismissal, without timers (SwiftUI) |
 | `MotionStepper` | Explicit host-owned completed/current workflow steps; bounded navigation (SwiftUI) |
+| `MotionAccordion` | Single/multi open sections with external state; SwiftUI, Flutter and React Native (v0.5 experimental) |
+| `MotionDisclosureGroup` | Native expandable region with independent nested content; SwiftUI, Flutter and React Native (v0.5 experimental) |
 
 Supporting these are semantic motion presets (`responsive`, `gentle`,
 `morph`, `settle`), light/dark palette tokens, layout dimensions, Reduce

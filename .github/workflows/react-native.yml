@@ -6,7 +6,9 @@ on:
     paths:
       - 'packages/react-native/**'
       - 'design/v0.2-component-contract*.json'
+      - 'design/v0.5-component-contract.json'
       - 'Tests/NativeMotionTests/Snapshots/**'
+      - 'tools/check_react_native_renderer.py'
       - '.github/workflows/react-native.yml'
   pull_request:
     paths:

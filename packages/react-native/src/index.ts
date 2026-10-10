@@ -35,3 +35,7 @@ export type {MotionMenuItem} from './MotionMenu';
 export type {MotionTabItem} from './MotionTabs';
 export type {MotionToastKind} from './MotionToast';
 export type {MotionStepItem} from './MotionStepper';
+export { MotionDisclosureGroup } from './MotionDisclosureGroup';
+export { MotionAccordion } from './MotionAccordion';
+export { toggleDisclosure, uniqueDisclosureIds } from './disclosurePolicies';
+export type { MotionAccordionItem } from './MotionAccordion';

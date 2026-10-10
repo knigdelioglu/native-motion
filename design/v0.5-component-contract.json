@@ -1,0 +1,797 @@
+{
+  "contractVersion": "0.5-draft.1",
+  "releaseTarget": "v0.5.0",
+  "status": "in-development",
+  "countRule": "conceptual-components-not-renderer-implementations",
+  "baseInventory": "design/v0.2-component-contract.json",
+  "baseCount": 25,
+  "targetCount": 55,
+  "requiredRenderers": [
+    "swiftui",
+    "flutter",
+    "react_native",
+    "compose"
+  ],
+  "components": [
+    {
+      "id": 26,
+      "name": "MotionAccordion",
+      "renderers": {
+        "swiftui": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionAccordion.swift"
+        },
+        "flutter": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/flutter/lib/src/widgets/motion_accordion.dart"
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionAccordion.tsx"
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 27,
+      "name": "MotionDisclosureGroup",
+      "renderers": {
+        "swiftui": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionDisclosureGroup.swift"
+        },
+        "flutter": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/flutter/lib/src/widgets/motion_disclosure_group.dart"
+        },
+        "react_native": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/react-native/src/MotionDisclosureGroup.tsx"
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 28,
+      "name": "MotionDrawer",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 29,
+      "name": "MotionSheet",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 30,
+      "name": "MotionBottomSheet",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 31,
+      "name": "MotionContextMenu",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 32,
+      "name": "MotionCommandMenu",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 33,
+      "name": "MotionBreadcrumb",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 34,
+      "name": "MotionPagination",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 35,
+      "name": "MotionSideNavigation",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 36,
+      "name": "MotionNavigationRail",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 37,
+      "name": "MotionDatePicker",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 38,
+      "name": "MotionTimePicker",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 39,
+      "name": "MotionDateRangePicker",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 40,
+      "name": "MotionMultiSelect",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 41,
+      "name": "MotionComboBox",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 42,
+      "name": "MotionTagInput",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 43,
+      "name": "MotionFilePicker",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 44,
+      "name": "MotionDropZone",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 45,
+      "name": "MotionColorPicker",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 46,
+      "name": "MotionDataTable",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 47,
+      "name": "MotionSortableTable",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 48,
+      "name": "MotionFilterBar",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 49,
+      "name": "MotionEmptyState",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 50,
+      "name": "MotionResultList",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 51,
+      "name": "MotionMetricCard",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 52,
+      "name": "MotionSparkline",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 53,
+      "name": "MotionLineChart",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 54,
+      "name": "MotionBarChart",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 55,
+      "name": "MotionDonutChart",
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "react_native": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    }
+  ]
+}

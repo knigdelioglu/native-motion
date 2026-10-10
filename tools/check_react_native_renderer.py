@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify 25 native source files/exports and Swift semantic token parity."""
+"""Verify the 25 v0.2 native source files/exports and Swift token parity."""
 import json
 import re
 from pathlib import Path
@@ -20,7 +20,7 @@ for item in components:
     assert renderer['source']==f'packages/react-native/src/{name}.tsx'
     assert renderer['implementation']=='available'
     assert renderer['validation']=='automated-only'
-assert len(list((repo/'src').glob('Motion*.tsx')))==25
+assert len(list((repo/'src').glob('Motion*.tsx')))>=25, 'v0.2 sources unexpectedly missing; later versions may add components'
 theme=(repo/'src/theme.ts').read_text()
 roles=('background','surface','elevatedSurface','primaryText','secondaryText','accent','accentText','border','success','warning','danger')
 for appearance in ('light','dark'):
@@ -28,4 +28,4 @@ for appearance in ('light','dark'):
     for role in roles:
         match=re.search(r'^'+role+r'=(#[0-9A-F]{6})$',fixture,re.M)
         assert match and f"{role}:'{match.group(1)}'" in theme, appearance+' '+role+' token drift'
-print('React Native renderer inventory PASS: 25 source components, 25 exports, light/dark tokens')
+print('React Native renderer inventory PASS: v0.2 25 core sources/exports, extended renderer allowed, light/dark tokens')
