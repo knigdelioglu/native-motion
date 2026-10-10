@@ -36,6 +36,12 @@ private struct CatalogView: View {
     @State private var fieldSearch = ""
     @State private var fieldAmount = 12.5
     @State private var formSubmitted = 0
+    @State private var pickerSelection = "all"
+    @State private var menuAction = "None"
+    @State private var dialogPresented = false
+    @State private var dialogPhase: MotionButtonPhase = .idle
+    @State private var dialogConfirmCount = 0
+    @State private var dialogCancelCount = 0
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var systemDynamicType
 
@@ -278,6 +284,86 @@ private struct CatalogView: View {
                     Text("Committed value: \(fieldAmount) · submits: \(formSubmitted)")
                         .font(.footnote).foregroundStyle(.secondary)
                     Text("Try a comma decimal with the Turkish locale, invalid text, and +/- at the limits.")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionSelect").font(.title2.bold())
+                    MotionSelect(
+                        "Category",
+                        options: [
+                            MotionSelectOption("all", title: "All"),
+                            MotionSelectOption("recent", title: "Recent"),
+                            MotionSelectOption("disabled", title: "Unavailable", isEnabled: false)
+                        ],
+                        selection: $pickerSelection,
+                        feedback: MotionFieldFeedback("Host-controlled selection", style: .hint)
+                    )
+                    Text("Selected: \(pickerSelection)")
+                        .font(.footnote).foregroundStyle(.secondary)
+                    MotionSelect(
+                        "Read-only",
+                        options: [MotionSelectOption("all", title: "All")],
+                        selection: .constant("all"),
+                        isEnabled: false
+                    )
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionMenu").font(.title2.bold())
+                    MotionMenu(
+                        "File actions",
+                        actions: [
+                            MotionMenuAction("share", title: "Share", systemImage: "square.and.arrow.up") {
+                                menuAction = "Share"
+                            },
+                            MotionMenuAction("blocked", title: "Unavailable", isEnabled: false) {},
+                            MotionMenuAction("delete", title: "Delete", systemImage: "trash", role: .destructive) {
+                                menuAction = "Delete"
+                            }
+                        ]
+                    )
+                    Text("Last menu action: \(menuAction)")
+                        .font(.footnote).foregroundStyle(.secondary)
+                    MotionMenu(
+                        "No available actions",
+                        actions: [MotionMenuAction("off", title: "Disabled", isEnabled: false) {}]
+                    )
+                }
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("MotionDialog").font(.title2.bold())
+                    Picker("Modal host phase", selection: $dialogPhase) {
+                        ForEach(MotionButtonPhase.allCases, id: \.self) { state in
+                            Text(state.rawValue.capitalized).tag(state)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    MotionDialog(
+                        "Delete local example",
+                        isPresented: $dialogPresented,
+                        confirmTitle: "Delete",
+                        phase: dialogPhase,
+                        confirmationRole: .destructive,
+                        onConfirm: {
+                            dialogConfirmCount += 1
+                            dialogPhase = .success
+                        },
+                        onCancel: { dialogCancelCount += 1 }
+                    ) {
+                        Text("Open confirmation dialog")
+                    } content: {
+                        Text("The host owns the operation and closes the modal explicitly.")
+                        if dialogPhase == .success {
+                            MotionButton("Close after completion", variant: .secondary) {
+                                dialogPresented = false
+                                dialogPhase = .idle
+                            }
+                        }
+                    }
+                    Text("Confirms: \(dialogConfirmCount) · cancels: \(dialogCancelCount)")
+                        .font(.footnote).foregroundStyle(.secondary)
+                    Text("Try keyboard focus, Escape, loading and reduced motion.")
                         .font(.caption).foregroundStyle(.secondary)
                 }
 
