@@ -33,7 +33,7 @@ class MotionSegmentedControl extends StatefulWidget {
     required this.selection,
     required this.onChanged,
     super.key,
-  }) : assert(segments.length > 0, 'At least one segment is required.'),
+  }) : assert(segments.isNotEmpty, 'At least one segment is required.'),
        assert(
          _uniqueSegmentIds(segments),
          'MotionSegment IDs must be unique.',
