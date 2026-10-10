@@ -1,0 +1,38 @@
+name: v0.5 Component Contract
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'design/v0.5-component-contract.json'
+      - 'design/v0.2-component-contract.json'
+      - 'plan/0.5.md'
+      - 'Sources/NativeMotion/SwiftUI/MotionAccordion.swift'
+      - 'Sources/NativeMotion/SwiftUI/MotionDisclosureGroup.swift'
+      - 'packages/react-native/src/**'
+      - 'packages/flutter/lib/**'
+      - 'tools/check_v05_contract.py'
+      - '.github/workflows/v05-contract.yml'
+  pull_request:
+    paths:
+      - 'design/v0.5-component-contract.json'
+      - 'design/v0.2-component-contract.json'
+      - 'plan/0.5.md'
+      - 'Sources/NativeMotion/SwiftUI/MotionAccordion.swift'
+      - 'Sources/NativeMotion/SwiftUI/MotionDisclosureGroup.swift'
+      - 'packages/react-native/src/**'
+      - 'packages/flutter/lib/**'
+      - 'tools/check_v05_contract.py'
+      - '.github/workflows/v05-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify 30 new concepts and three active renderer sources
+        run: python3 tools/check_v05_contract.py
