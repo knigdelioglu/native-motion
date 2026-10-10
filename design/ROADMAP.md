@@ -10,11 +10,11 @@
 - [x] Spring-linked segmented control with bounded keyboard navigation
 - [x] Expandable card with independent host-controlled state
 - [x] Catalog examples and platform-neutral selection tests
+- [x] Independent bounded elastic slider with gesture, keyboard and VoiceOver adjustment
+- [x] Passive accessible status indicator with all major operation states
 - [ ] Manual visual and accessibility walkthrough on Apple hardware
 
 ## Next
-- Elastic slider: bounded, precise values with keyboard and gesture support
-- Motion status indicators with visible accessible feedback
 - Visual regression baselines and performance/interaction checks
 - Flutter renderer after native interaction contracts mature
 - Jetpack Compose renderer calibrated independently

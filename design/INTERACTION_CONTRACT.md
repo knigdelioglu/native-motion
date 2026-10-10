@@ -41,3 +41,32 @@ Components receive bindings and emit actions; applications own domain state.
 
 Automated cross-platform navigation tests are not a replacement for the
 manual accessibility and rendering walkthrough.
+
+## MotionElasticSlider
+
+- `Binding<Double>` remains authoritative. The host chooses minimum, maximum,
+  step, marks and receives begin/end and commit callbacks separately.
+- Numeric scale sanitizes invalid bounds and non-finite values and includes
+  the upper endpoint even when the final interval is shorter.
+- A drag follows the pointer without lag. Outside the bounds, a limited
+  rubber-band displacement gives physical feedback and returns on release.
+- Reduced Motion eliminates stretch and thumb scaling.
+- RTL drag and arrow direction match physical layout. macOS keys and
+  VoiceOver adjustable actions honor step boundaries.
+- Disabled interaction does not call callbacks or write to the Binding.
+
+## MotionStatusIndicator
+
+- Entirely passive and host-driven; it never simulates asynchronous progress.
+- Uses a combination of visible label, status text, color, and system symbol.
+- Reduced Motion changes busy feedback from an indefinite spinner to a
+  static clock icon.
+
+## Additional manual checks
+
+- Drag to both slider edges and beyond; verify constrained values and an
+  immediate snap-back, including in RTL.
+- Verify fractional step precision, a short final interval, and rapid changes.
+- Confirm adjustable actions from VoiceOver and macOS arrow keys, including
+  disabled state and a read-only host binding.
+- Observe all five status variants without depending on color alone.

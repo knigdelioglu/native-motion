@@ -30,7 +30,7 @@ public struct NativeMotionRGB: Equatable, Sendable {
 public enum NativeMotionAppearance: CaseIterable, Sendable { case light, dark }
 public enum NativeMotionColorRole: CaseIterable, Sendable {
     case background, surface, elevatedSurface, primaryText, secondaryText
-    case accent, accentText, border, success, danger
+    case accent, accentText, border, success, warning, danger
 }
 
 public enum NativeMotionPalette {
@@ -46,6 +46,7 @@ public enum NativeMotionPalette {
         case (.light, .accentText): value = 0xFFFFFF
         case (.light, .border): value = 0xD5DDE8
         case (.light, .success): value = 0x187448
+        case (.light, .warning): value = 0x875000
         case (.light, .danger): value = 0xB62D39
         case (.dark, .background): value = 0x141922
         case (.dark, .surface): value = 0x1D2531
@@ -56,6 +57,7 @@ public enum NativeMotionPalette {
         case (.dark, .accentText): value = 0x101925
         case (.dark, .border): value = 0x445064
         case (.dark, .success): value = 0x74DFA7
+        case (.dark, .warning): value = 0xFFCB70
         case (.dark, .danger): value = 0xFF9198
         }
         return .init(hex: value)
