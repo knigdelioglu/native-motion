@@ -82,7 +82,7 @@ private enum VisualAudit {
             .nativeMotionOffscreenPreview()
             .environment(\.colorScheme, appearance)
             .nativeMotionPreviewReduceMotion(scenario == .reducedMotion)
-            .environment(\.dynamicTypeSize, scenario == .largeText ? .accessibility1 : .large)
+            .environment(\.layoutDirection, scenario == .rightToLeft ? .rightToLeft : .leftToRight)
         let renderer = ImageRenderer(content: content)
         renderer.scale = 2
         guard let image = renderer.cgImage, image.width == 1440, image.height == 1560 else {

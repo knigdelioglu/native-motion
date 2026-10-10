@@ -4,14 +4,14 @@ public enum MotionQualityScenario: String, CaseIterable, Sendable {
     case light
     case dark
     case reducedMotion
-    case largeText
+    case rightToLeft
 }
 
 public enum MotionQualityContract {
     /// These baselines describe which cases every renderer's catalog should expose.
     /// They are not an assertion that screenshots look identical across platforms.
     public static let expectedScenarios: [MotionQualityScenario] = [
-        .light, .dark, .reducedMotion, .largeText
+        .light, .dark, .reducedMotion, .rightToLeft
     ]
 
     public static let componentNames: [String] = [

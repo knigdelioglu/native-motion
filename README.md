@@ -71,7 +71,7 @@ segment. The control does not silently override external state.
 
 The quality pipeline tests semantic token reference files, slider invariants and
 contrast on macOS/Linux. On macOS it captures four SwiftUI images (light, dark,
-Reduce Motion, large text) and uploads them as Actions artifacts. Captured images
+Reduce Motion, right-to-left layout) and uploads them as Actions artifacts. Captured images
 are not yet approved pixel baselines; a comparison CLI is provided for the
 maintainer approval workflow. The release-mode microbenchmark measures only
 numeric interaction logic, not GPU frames or real-device responsiveness.

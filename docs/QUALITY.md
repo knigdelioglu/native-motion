@@ -19,7 +19,11 @@ swift run -c release NativeMotionVisualAudit artifacts/visual
 ```
 
 The macOS tool captures four rendered SwiftUI states at 2× scale:
-`light.png`, `dark.png`, `reducedMotion.png`, `largeText.png`.
+Large text is **not** represented by these captures: the macOS headless
+`ImageRenderer` did not visibly reflect changes to Dynamic Type. Large text
+must be checked in the interactive Catalog and on real Apple devices.
+The four offscreen scenarios are:
+`light.png`, `dark.png`, `reducedMotion.png`, `rightToLeft.png`.
 CI uploads these images as downloadable workflow artifacts for human review.
 The offscreen SwiftUI renderer cannot draw an interactive `ScrollViewReader`
 or its indeterminate `ProgressView` consistently. Audit mode therefore

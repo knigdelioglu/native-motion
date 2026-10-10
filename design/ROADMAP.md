@@ -16,7 +16,7 @@
 
 ## PR 4 · Quality instrumentation
 - [x] Deterministic design-token regression goldens on macOS/Linux
-- [x] Native SwiftUI screenshot capture for light/dark/reduced-motion/large-text
+- [x] Native SwiftUI screenshot capture for light/dark/reduced-motion/right-to-left
 - [x] Baseline image-comparison mode requiring approved reference screenshots
 - [x] Repeatable non-UI benchmark with CI artifact (no unreliable speed threshold)
 - [x] Expanded scalar/state correctness and contrast tests
