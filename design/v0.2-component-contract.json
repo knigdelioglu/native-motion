@@ -380,13 +380,20 @@
       "id": 13,
       "name": "MotionTextField",
       "states": [
-        "to-be-defined-before-implementation"
+        "idle",
+        "focused",
+        "validation",
+        "error",
+        "disabled",
+        "submit",
+        "rtl",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionTextField.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -404,13 +411,20 @@
       "id": 14,
       "name": "MotionSearchField",
       "states": [
-        "to-be-defined-before-implementation"
+        "idle",
+        "focused",
+        "typing",
+        "clear",
+        "disabled",
+        "submit",
+        "rtl",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionSearchField.swift"
         },
         "flutter": {
           "implementation": "planned",
@@ -428,13 +442,23 @@
       "id": 15,
       "name": "MotionNumberField",
       "states": [
-        "to-be-defined-before-implementation"
+        "valid",
+        "invalid",
+        "editing",
+        "commit",
+        "minimum",
+        "maximum",
+        "step",
+        "locale",
+        "disabled",
+        "rtl",
+        "reducedMotion"
       ],
       "renderers": {
         "swiftui": {
-          "implementation": "planned",
-          "validation": "not-run",
-          "source": null
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionNumberField.swift"
         },
         "flutter": {
           "implementation": "planned",

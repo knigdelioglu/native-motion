@@ -35,6 +35,9 @@ and mandatory acceptance gates are defined separately in each plan.
 | `MotionCheckbox` | Native tri-state checkbox (checked/unchecked/mixed), host-controlled (SwiftUI) |
 | `MotionRadioGroup` | Native single choice, disabled options, bounded keyboard navigation and RTL (SwiftUI) |
 | `MotionSwitch` | Platform-native system switch with host-owned Boolean state and optional detail (SwiftUI) |
+| `MotionTextField` | Native text input with focus and visible helper/error state (SwiftUI) |
+| `MotionSearchField` | Host-owned search input with clear and submit controls (SwiftUI) |
+| `MotionNumberField` | Locale-aware bounded number entry, strict parsing, adjustable increments (SwiftUI) |
 
 Supporting these are semantic motion presets (`responsive`, `gentle`,
 `morph`, `settle`), light/dark palette tokens, layout dimensions, Reduce
