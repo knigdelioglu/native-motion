@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Native Motion v0.2 Component Inventory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contractVersion",
+    "releaseTarget",
+    "status",
+    "countRule",
+    "colorReference",
+    "motionIntents",
+    "completionRequires",
+    "components"
+  ],
+  "properties": {
+    "contractVersion": {
+      "type": "string"
+    },
+    "releaseTarget": {
+      "const": "v0.2.0"
+    },
+    "status": {
+      "const": "work-in-progress"
+    },
+    "countRule": {
+      "const": "conceptual-components-not-renderer-implementations"
+    },
+    "colorReference": {
+      "type": "object",
+      "required": [
+        "light",
+        "dark",
+        "policy"
+      ],
+      "properties": {
+        "light": {
+          "type": "string"
+        },
+        "dark": {
+          "type": "string"
+        },
+        "policy": {
+          "const": "exact-semantic-role-parity"
+        }
+      },
+      "additionalProperties": false
+    },
+    "motionIntents": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true
+    },
+    "completionRequires": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 5,
+      "uniqueItems": true
+    },
+    "components": {
+      "type": "array",
+      "minItems": 25,
+      "maxItems": 25,
+      "items": {
+        "$ref": "#/$defs/component"
+      }
+    }
+  },
+  "$defs": {
+    "renderer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "implementation",
+        "validation",
+        "source"
+      ],
+      "properties": {
+        "implementation": {
+          "enum": [
+            "available",
+            "planned"
+          ]
+        },
+        "validation": {
+          "enum": [
+            "automated-only",
+            "device-verified",
+            "not-run"
+          ]
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "states",
+        "renderers"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 25
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^Motion[A-Za-z0-9]+$"
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "renderers": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "swiftui",
+            "flutter",
+            "compose"
+          ],
+          "properties": {
+            "swiftui": {
+              "$ref": "#/$defs/renderer"
+            },
+            "flutter": {
+              "$ref": "#/$defs/renderer"
+            },
+            "compose": {
+              "$ref": "#/$defs/renderer"
+            }
+          }
+        }
+      }
+    }
+  }
+}

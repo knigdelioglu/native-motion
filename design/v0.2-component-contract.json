@@ -1,0 +1,656 @@
+{
+  "contractVersion": "0.2-draft.1",
+  "releaseTarget": "v0.2.0",
+  "status": "work-in-progress",
+  "countRule": "conceptual-components-not-renderer-implementations",
+  "colorReference": {
+    "light": "Tests/NativeMotionTests/Snapshots/tokens-light.txt",
+    "dark": "Tests/NativeMotionTests/Snapshots/tokens-dark.txt",
+    "policy": "exact-semantic-role-parity"
+  },
+  "motionIntents": [
+    "responsive",
+    "gentle",
+    "morph",
+    "settle"
+  ],
+  "completionRequires": [
+    "passing-ci",
+    "catalog-example",
+    "semantic-state-matrix",
+    "reduced-motion",
+    "rtl-where-applicable",
+    "keyboard-and-touch-where-applicable",
+    "approved-visual-baselines",
+    "real-device-accessibility-and-motion-review"
+  ],
+  "components": [
+    {
+      "id": 1,
+      "name": "MotionButton",
+      "states": [
+        "idle",
+        "loading",
+        "success",
+        "failure",
+        "disabled",
+        "pressed",
+        "focus",
+        "reducedMotion"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionButton.swift"
+        },
+        "flutter": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/flutter/lib/src/widgets/motion_button.dart"
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "MotionSegmentedControl",
+      "states": [
+        "selected",
+        "unselected",
+        "disabled",
+        "keyboard",
+        "rtl",
+        "reducedMotion"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionSegmentedControl.swift"
+        },
+        "flutter": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/flutter/lib/src/widgets/motion_segmented_control.dart"
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "MotionExpandableCard",
+      "states": [
+        "expanded",
+        "collapsed",
+        "readOnly",
+        "nestedFocus",
+        "reducedMotion"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionExpandableCard.swift"
+        },
+        "flutter": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/flutter/lib/src/widgets/motion_expandable_card.dart"
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 4,
+      "name": "MotionElasticSlider",
+      "states": [
+        "bounded",
+        "step",
+        "drag",
+        "keyboard",
+        "rtl",
+        "disabled",
+        "reducedMotion"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionElasticSlider.swift"
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 5,
+      "name": "MotionStatusIndicator",
+      "states": [
+        "neutral",
+        "processing",
+        "success",
+        "warning",
+        "failure",
+        "reducedMotion"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "Sources/NativeMotion/SwiftUI/MotionStatusIndicator.swift"
+        },
+        "flutter": {
+          "implementation": "available",
+          "validation": "automated-only",
+          "source": "packages/flutter/lib/src/widgets/motion_status_indicator.dart"
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 6,
+      "name": "MotionIconButton",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 7,
+      "name": "MotionSplitButton",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 8,
+      "name": "MotionConfirmButton",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 9,
+      "name": "MotionToggle",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 10,
+      "name": "MotionCheckbox",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 11,
+      "name": "MotionRadioGroup",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 12,
+      "name": "MotionSwitch",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 13,
+      "name": "MotionTextField",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 14,
+      "name": "MotionSearchField",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 15,
+      "name": "MotionNumberField",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 16,
+      "name": "MotionSelect",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 17,
+      "name": "MotionMenu",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 18,
+      "name": "MotionDialog",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 19,
+      "name": "MotionPopover",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 20,
+      "name": "MotionTooltip",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 21,
+      "name": "MotionTabs",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 22,
+      "name": "MotionProgress",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 23,
+      "name": "MotionToast",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 24,
+      "name": "MotionSkeleton",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    },
+    {
+      "id": 25,
+      "name": "MotionStepper",
+      "states": [
+        "to-be-defined-before-implementation"
+      ],
+      "renderers": {
+        "swiftui": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "flutter": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        },
+        "compose": {
+          "implementation": "planned",
+          "validation": "not-run",
+          "source": null
+        }
+      }
+    }
+  ]
+}
