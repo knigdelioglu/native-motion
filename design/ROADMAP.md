@@ -1,17 +1,22 @@
 # Roadmap
 
-## PR 1: Foundation
+## PR 1 · Foundation
 - [x] Swift Package with original semantic design and motion tokens
-- [x] First SwiftUI renderer and MotionButton
-- [x] Independent interactive SwiftUI catalog executable
-- [x] CI for Swift package builds and token tests
+- [x] Native SwiftUI MotionButton and interactive catalog
+- [x] macOS and Linux package CI
 - [ ] Manual Apple-device VoiceOver, Dynamic Type and Reduce Motion audit
 
-## Next milestones
-- Segmented control and expandable card
-- Elastic slider with accessibility and boundary behavior
-- Visual regression coverage and performance probes
-- Flutter renderer after the semantic contract is validated
-- Jetpack Compose renderer independently calibrated for Android
+## PR 2 · Interactive controls
+- [x] Spring-linked segmented control with bounded keyboard navigation
+- [x] Expandable card with independent host-controlled state
+- [x] Catalog examples and platform-neutral selection tests
+- [ ] Manual visual and accessibility walkthrough on Apple hardware
 
-Do not copy UI components en masse: prioritize quality and tests over count.
+## Next
+- Elastic slider: bounded, precise values with keyboard and gesture support
+- Motion status indicators with visible accessible feedback
+- Visual regression baselines and performance/interaction checks
+- Flutter renderer after native interaction contracts mature
+- Jetpack Compose renderer calibrated independently
+
+Prioritize native interaction quality over the number of components.
